@@ -1,17 +1,17 @@
 import React from 'react';
-import { Rocket, CheckCircle2, ExternalLink, Code2 } from 'lucide-react';
+import { Rocket, CheckCircle2, ExternalLink, Code2, Users, Target } from 'lucide-react';
 
 const Project = () => {
   return (
     <section id="project" className="py-20 bg-white">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="text-center space-y-4 mb-16">
-          <h3 className="text-sm font-semibold text-navy-600 uppercase tracking-wide">Personal Initiative</h3>
+          <h3 className="text-sm font-bold text-navy-600 uppercase tracking-wide">Personal Initiative</h3>
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900">
-            Featured Project
+            Building Real Solutions
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Self-driven innovation to solve real-world business challenges
+            Self-driven SaaS platform solving real operational challenges for growing businesses
           </p>
         </div>
 
@@ -36,59 +36,82 @@ const Project = () => {
                   </div>
                   <div>
                     <h3 className="text-3xl font-bold">BizControl.tech</h3>
-                    <p className="text-blue-200 text-sm">Productivity & Operations Management Tool</p>
+                    <p className="text-blue-200 text-sm font-semibold">SaaS Operations Management Platform</p>
                   </div>
                 </div>
 
-                <p className="text-lg text-blue-50 mb-6 leading-relaxed">
-                  A self-initiated project built to solve real business challenges in productivity, task management, 
-                  and workflow efficiency. This platform demonstrates my deep understanding of operations, systems, 
-                  and business processes.
-                </p>
+                <div className="space-y-4 mb-6">
+                  <div>
+                    <h4 className="font-bold text-white mb-2">The Problem</h4>
+                    <p className="text-blue-50 leading-relaxed">
+                      Most SMBs struggle with scattered task management, inconsistent team productivity, and lack of 
+                      operational visibility—leading to missed deadlines, inefficiency, and poor resource utilization.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 className="font-bold text-white mb-2">The Solution</h4>
+                    <p className="text-blue-50 leading-relaxed">
+                      BizControl is an all-in-one operations management platform that centralizes task management, 
+                      team collaboration, and performance analytics—helping businesses run smoother and scale faster.
+                    </p>
+                  </div>
+                </div>
 
                 <div className="space-y-3 mb-8">
                   <h4 className="font-semibold text-white flex items-center space-x-2">
                     <Code2 className="w-5 h-5" />
-                    <span>Key Features:</span>
+                    <span>Core Capabilities:</span>
                   </h4>
                   <div className="space-y-2">
                     {[
-                      'Task Management & Workflow Automation',
-                      'Team Productivity Tracking',
-                      'Operations Dashboard & Analytics',
-                      'Business Process Optimization Tools'
+                      'Intelligent Task & Project Management with automation',
+                      'Real-time Team Productivity Analytics & Insights',
+                      'Customizable Operations Dashboards',
+                      'Process Workflow Builder & Optimization Tools',
+                      'Integration with existing business tools'
                     ].map((feature, idx) => (
                       <div key={idx} className="flex items-start space-x-3">
                         <CheckCircle2 className="w-5 h-5 text-blue-300 mt-0.5 flex-shrink-0" />
-                        <span className="text-blue-50">{feature}</span>
+                        <span className="text-blue-50 font-medium">{feature}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <div className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg text-sm">
-                  <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-                  <span className="text-white font-medium">Currently Under Development</span>
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 mb-6">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <Target className="w-4 h-4 text-blue-200" />
+                    <div className="text-sm text-blue-100">Target Users</div>
+                  </div>
+                  <div className="text-white font-semibold">SMBs, Operations Managers, Remote Teams, Growing Startups</div>
                 </div>
 
-                <a
-                  href="https://bizcontrol.tech"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center space-x-2 mt-6 text-white hover:text-blue-200 transition-colors font-medium"
-                >
-                  <span>Visit Project</span>
-                  <ExternalLink className="w-4 h-4" />
-                </a>
+                <div className="flex flex-wrap gap-4 items-center">
+                  <div className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg text-sm">
+                    <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                    <span className="text-white font-medium">Active Development</span>
+                  </div>
+                  <a
+                    href="https://bizcontrol.tech"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center space-x-2 bg-white text-navy-600 px-4 py-2 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+                  >
+                    <span>Visit Platform</span>
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="mt-8 bg-blue-50 rounded-xl p-6 border border-blue-100">
+          <div className="mt-8 bg-gradient-to-r from-blue-50 to-navy-50 rounded-xl p-6 border border-blue-200">
             <p className="text-gray-700 leading-relaxed">
-              <strong className="text-navy-600">Why This Matters:</strong> This project showcases my entrepreneurial mindset, 
-              technical understanding, and ability to identify and solve real business problems. It reflects my passion for 
-              improving operational efficiency and demonstrates initiative beyond traditional work responsibilities.
+              <strong className="text-navy-600">Why This Matters:</strong> This project demonstrates my entrepreneurial mindset 
+              and ability to identify real business problems. It showcases technical understanding, product thinking, and 
+              my passion for building solutions that improve operational efficiency—skills that translate directly into 
+              value for any organization.
             </p>
           </div>
         </div>

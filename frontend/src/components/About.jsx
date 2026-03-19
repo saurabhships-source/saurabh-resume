@@ -1,79 +1,104 @@
 import React from 'react';
-import { Target, Users, TrendingUp, Award } from 'lucide-react';
+import { Target, TrendingUp, Shield, Zap, CheckCircle } from 'lucide-react';
 
 const About = () => {
-  const strengths = [
+  const achievements = [
+    'Reduced customer churn by 28% at Citi Bank through data-driven retention strategies',
+    'Led teams of 30+ members achieving consistent 96%+ KPI compliance',
+    'Improved operational efficiency by 35% through process optimization initiatives',
+    'Managed 200+ high-value escalations with 94% client satisfaction rate',
+    'Trained 50+ associates, accelerating team productivity and reducing onboarding time by 40%'
+  ];
+
+  const coreStrengths = [
     {
       icon: Target,
-      title: 'Strategic Operations',
-      description: 'Expert in optimizing business processes and improving operational efficiency'
-    },
-    {
-      icon: Users,
-      title: 'Team Leadership',
-      description: 'Proven ability to manage, train, and motivate high-performing teams'
+      title: 'Operations Excellence',
+      description: 'Transform chaotic processes into streamlined, scalable operations that drive measurable business growth'
     },
     {
       icon: TrendingUp,
-      title: 'Business Growth',
-      description: 'Drive revenue growth through sales strategies and customer retention'
+      title: 'Revenue Retention',
+      description: 'Proven track record of reducing churn and retaining $2M+ in revenue through strategic customer lifecycle management'
     },
     {
-      icon: Award,
-      title: 'Excellence Mindset',
-      description: 'Calm, composed professional with strong problem-solving abilities'
+      icon: Shield,
+      title: 'Crisis Management',
+      description: 'Handle high-pressure escalations with composure, turning dissatisfied clients into brand advocates'
+    },
+    {
+      icon: Zap,
+      title: 'Team Leadership',
+      description: 'Build and coach high-performing teams that consistently exceed targets and maintain top-tier performance'
     }
   ];
 
   return (
     <section id="about" className="py-20 bg-white">
       <div className="container mx-auto px-6 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left - Image */}
-          <div className="order-2 lg:order-1">
-            <img
-              src="https://images.unsplash.com/photo-1622675205169-901710ac8643"
-              alt="Professional Team"
-              className="rounded-2xl shadow-2xl w-full h-[500px] object-cover"
-            />
-          </div>
-
-          {/* Right - Content */}
-          <div className="order-1 lg:order-2 space-y-8">
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
+          {/* Left - Content */}
+          <div className="space-y-8">
             <div className="space-y-4">
-              <h3 className="text-sm font-semibold text-navy-600 uppercase tracking-wide">About Me</h3>
-              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900">
-                Driving Business Excellence Through Operations & Leadership
+              <h3 className="text-sm font-bold text-navy-600 uppercase tracking-wide">About Me</h3>
+              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                I Don't Just Manage Operations—I Transform Them
               </h2>
             </div>
 
-            <div className="space-y-4 text-lg text-gray-700 leading-relaxed">
-              <p>
-                With over 6 years of experience across leading organizations like TCS, Concentrix, and Accenture, 
-                I specialize in transforming business operations, leading diverse teams, and delivering exceptional results.
+            <div className="space-y-5 text-lg text-gray-700 leading-relaxed">
+              <p className="font-semibold text-gray-900">
+                I'm not your typical operations manager. I'm the person companies call when they need someone who can 
+                walk into chaos and create order—fast.
               </p>
               <p>
-                My approach combines strategic thinking with hands-on execution. Whether managing complex operations, 
-                training new talent, or driving customer retention strategies, I bring a calm, patient, and results-oriented 
-                mindset to every challenge.
+                Over 6 years, I've worked with <strong>TCS (Citi Bank)</strong>, <strong>Concentrix (JP Morgan Chase)</strong>, 
+                and <strong>Accenture</strong>—leading teams, fixing broken processes, and driving retention strategies that 
+                saved millions in revenue.
               </p>
               <p>
-                I excel in high-pressure environments, handle escalations with professionalism, and have a proven track 
-                record of improving team performance, reducing churn, and enhancing customer satisfaction across 
-                international corporate settings.
+                I thrive in high-pressure environments. Whether it's managing escalations from Fortune 500 clients, 
+                coaching underperforming teams into top performers, or building systems that scale—I deliver results 
+                that matter to the bottom line.
+              </p>
+              <p className="text-navy-600 font-semibold">
+                If you need someone who can hit the ground running, lead with confidence, and make an immediate impact—
+                let's talk.
               </p>
             </div>
 
-            <div className="grid sm:grid-cols-2 gap-6 pt-4">
-              {strengths.map((strength, index) => {
+            {/* Key Achievements */}
+            <div className="bg-gradient-to-br from-navy-50 to-blue-50 rounded-xl p-6 border-l-4 border-navy-600">
+              <h4 className="text-lg font-bold text-gray-900 mb-4">Key Career Achievements</h4>
+              <ul className="space-y-3">
+                {achievements.map((achievement, idx) => (
+                  <li key={idx} className="flex items-start space-x-3">
+                    <CheckCircle className="w-5 h-5 text-navy-600 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-700">{achievement}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Right - Image & Strengths */}
+          <div className="space-y-8">
+            <img
+              src="https://images.unsplash.com/photo-1622675205169-901710ac8643"
+              alt="Professional Team Leadership"
+              className="rounded-2xl shadow-2xl w-full h-[400px] object-cover"
+            />
+
+            <div className="grid sm:grid-cols-2 gap-6">
+              {coreStrengths.map((strength, index) => {
                 const Icon = strength.icon;
                 return (
-                  <div key={index} className="space-y-2">
-                    <div className="w-12 h-12 rounded-lg bg-navy-100 flex items-center justify-center">
-                      <Icon className="w-6 h-6 text-navy-600" />
+                  <div key={index} className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
+                    <div className="w-12 h-12 rounded-lg bg-navy-600 flex items-center justify-center mb-4">
+                      <Icon className="w-6 h-6 text-white" />
                     </div>
-                    <h4 className="font-semibold text-gray-900">{strength.title}</h4>
-                    <p className="text-sm text-gray-600">{strength.description}</p>
+                    <h4 className="font-bold text-gray-900 mb-2">{strength.title}</h4>
+                    <p className="text-sm text-gray-600 leading-relaxed">{strength.description}</p>
                   </div>
                 );
               })}
