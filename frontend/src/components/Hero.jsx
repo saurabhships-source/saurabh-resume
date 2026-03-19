@@ -73,11 +73,15 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right Content - Photo Placeholder */}
+          {/* Right Content - Professional Photo */}
           <div className="flex justify-center lg:justify-end">
             <div className="relative">
-              <div className="w-80 h-80 lg:w-96 lg:h-96 rounded-2xl bg-gradient-to-br from-navy-100 to-blue-100 flex items-center justify-center shadow-2xl">
-                <User className="w-40 h-40 text-navy-300" />
+              <div className="w-80 h-80 lg:w-96 lg:h-96 rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                <img
+                  src="https://customer-assets.emergentagent.com/job_saurabh-ops/artifacts/syafy5uc_ChatGPT%20Image%20Mar%2019%2C%202026%2C%2011_11_39%20PM.png"
+                  alt="Saurabh Mishra - Professional"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="absolute -bottom-6 -right-6 bg-white rounded-xl shadow-lg p-6">
                 <div className="text-center">
