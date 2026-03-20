@@ -9,21 +9,21 @@ const generateResumePDF = () => {
 
   // Premium Color Palette
   const colors = {
-    primary: [30, 58, 138],      // Navy 600
-    primaryLight: [59, 130, 246], // Blue 500
-    accent: [37, 99, 235],        // Blue 600
-    dark: [17, 24, 39],           // Gray 900
-    text: [55, 65, 81],           // Gray 700
-    textLight: [107, 114, 128],   // Gray 500
-    bgLight: [249, 250, 251],     // Gray 50
-    bgCard: [243, 244, 246],      // Gray 100
+    primary: [30, 58, 138],
+    primaryLight: [59, 130, 246],
+    accent: [37, 99, 235],
+    dark: [17, 24, 39],
+    text: [55, 65, 81],
+    textLight: [107, 114, 128],
+    bgLight: [249, 250, 251],
+    bgCard: [243, 244, 246],
     white: [255, 255, 255]
   };
 
   const pageWidth = 210;
   const pageHeight = 297;
   const leftColWidth = 125;
-  const rightColWidth = 75;
+  const rightColWidth = 70;
   const rightColX = 135;
   let leftY = 0;
   let rightY = 0;
@@ -47,69 +47,46 @@ const generateResumePDF = () => {
     doc.setGState(doc.GState({ opacity: 1 }));
   };
 
-  const addText = (text, x, y, size, style = 'normal', color = colors.text, maxWidth = null) => {
-    doc.setFontSize(size);
-    doc.setFont('helvetica', style);
-    doc.setTextColor(...color);
-    if (maxWidth) {
-      const lines = doc.splitTextToSize(text, maxWidth);
-      doc.text(lines, x, y);
-      return lines.length * (size * 0.4);
-    } else {
-      doc.text(text, x, y);
-      return size * 0.4;
-    }
-  };
-
-  // ===== HEADER SECTION (Full Width) =====
+  // ===== PAGE 1 - HEADER =====
   doc.setFillColor(...colors.primary);
-  doc.rect(0, 0, pageWidth, 60, 'F');
+  doc.rect(0, 0, pageWidth, 58, 'F');
 
-  // Name - Large and Bold
+  // Name
   doc.setFontSize(32);
   doc.setFont('helvetica', 'bold');
   doc.setTextColor(...colors.white);
   doc.text('SAURABH MISHRA', 15, 22);
 
-  // Role/Title
+  // Role
   doc.setFontSize(11);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(219, 234, 254);
   doc.text('Operations Manager | Customer Retention Specialist | Team Leader', 15, 30);
 
-  // Horizontal line separator
+  // Line separator
   doc.setDrawColor(255, 255, 255);
   doc.setGState(doc.GState({ opacity: 0.3 }));
   doc.setLineWidth(0.3);
   doc.line(15, 34, 195, 34);
   doc.setGState(doc.GState({ opacity: 1 }));
 
-  // Contact Information - Clean text only
+  // Contact Info
   doc.setFontSize(8.5);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(...colors.white);
   
-  doc.text('Email:', 15, 40);
-  doc.text('saurabhmishra33555@gmail.com', 26, 40);
-  
-  doc.text('Phone:', 90, 40);
-  doc.text('+91 9867179669 / 9155361659', 102, 40);
-  
-  doc.text('Location:', 15, 45);
-  doc.text('Dombivli, India (Remote)', 31, 45);
-  
-  doc.text('LinkedIn:', 90, 45);
-  doc.text('linkedin.com/in/saurabh-mishra-004a98383', 105, 45);
-  
-  doc.text('Portfolio:', 15, 50);
-  doc.text('bizcontrol.tech', 31, 50);
+  doc.text('Email: saurabhmishra33555@gmail.com', 15, 40);
+  doc.text('Phone: +91 9867179669 / 9155361659', 15, 45);
+  doc.text('Location: Dombivli, India (Remote)', 15, 50);
+  doc.text('LinkedIn: linkedin.com/in/saurabh-mishra-004a98383', 105, 40);
+  doc.text('Portfolio: bizcontrol.tech', 105, 45);
 
-  leftY = 70;
-  rightY = 70;
+  leftY = 68;
+  rightY = 68;
 
-  // ===== RIGHT SIDEBAR =====
+  // ===== RIGHT SIDEBAR - PAGE 1 =====
   
-  // Profile Image Placeholder
+  // Profile Image
   addShadow(rightColX, rightY, 60, 60, 3);
   doc.setFillColor(240, 240, 245);
   doc.roundedRect(rightColX, rightY, 60, 60, 3, 3, 'F');
@@ -123,7 +100,7 @@ const generateResumePDF = () => {
   doc.text('Photo', rightColX + 30, rightY + 33, { align: 'center' });
   rightY += 68;
 
-  // Key Metrics Cards
+  // Key Metrics
   doc.setFontSize(11);
   doc.setFont('helvetica', 'bold');
   doc.setTextColor(...colors.dark);
@@ -154,101 +131,66 @@ const generateResumePDF = () => {
     rightY += 21;
   });
 
-  rightY += 5;
+  rightY += 6;
 
-  // Skills Section
-  doc.setFontSize(11);
-  doc.setFont('helvetica', 'bold');
-  doc.setTextColor(...colors.dark);
-  doc.text('CORE SKILLS', rightColX, rightY);
-  rightY += 8;
-
-  const skills = [
-    'Operations Management',
-    'Customer Retention',
-    'Team Leadership',
-    'Training & Development',
-    'Analytics & Reporting',
-    'Process Optimization',
-    'Virtual Assistance',
-    'Communication',
-    'Problem Solving',
-    'Team Coordination'
-  ];
-
-  skills.forEach((skill) => {
-    const textWidth = doc.getTextWidth(skill);
-    addRoundedRect(rightColX, rightY - 4, Math.min(textWidth + 5, 58), 6, 1.5, 'F', colors.bgCard);
-    doc.setFontSize(7.5);
-    doc.setFont('helvetica', 'normal');
-    doc.setTextColor(...colors.text);
-    
-    if (textWidth + 5 > 58) {
-      const lines = doc.splitTextToSize(skill, 56);
-      doc.text(lines, rightColX + 2.5, rightY);
-      rightY += (lines.length * 5) + 2;
-    } else {
-      doc.text(skill, rightColX + 2.5, rightY);
-      rightY += 7;
-    }
-  });
-
-  rightY += 5;
-
-  // Education Section
+  // Education
   doc.setFontSize(11);
   doc.setFont('helvetica', 'bold');
   doc.setTextColor(...colors.dark);
   doc.text('EDUCATION', rightColX, rightY);
   rightY += 8;
 
-  addRoundedRect(rightColX, rightY, 60, 22, 2, 'F', colors.white);
-  addShadow(rightColX, rightY, 60, 22, 2);
+  addRoundedRect(rightColX, rightY, 60, 28, 2, 'F', colors.white);
+  addShadow(rightColX, rightY, 60, 28, 2);
   
   doc.setFontSize(9);
   doc.setFont('helvetica', 'bold');
   doc.setTextColor(...colors.text);
-  doc.text('Bachelor of Science', rightColX + 3, rightY + 6);
+  doc.text('Bachelor of Science', rightColX + 3, rightY + 7);
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(7);
+  doc.setFontSize(7.5);
   doc.setTextColor(...colors.textLight);
-  doc.text('2015', rightColX + 3, rightY + 10);
+  doc.text('(BSc) - 2015', rightColX + 3, rightY + 12);
   
   doc.setFontSize(9);
   doc.setFont('helvetica', 'bold');
   doc.setTextColor(...colors.text);
-  doc.text('Higher Secondary', rightColX + 3, rightY + 16);
+  doc.text('Higher Secondary', rightColX + 3, rightY + 19);
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(7);
+  doc.setFontSize(7.5);
   doc.setTextColor(...colors.textLight);
-  doc.text('2009', rightColX + 3, rightY + 20);
+  doc.text('(HSC) - 2009', rightColX + 3, rightY + 24);
 
-  rightY += 28;
+  rightY += 34;
 
   // Certifications
   doc.setFontSize(11);
   doc.setFont('helvetica', 'bold');
   doc.setTextColor(...colors.dark);
   doc.text('CERTIFICATIONS', rightColX, rightY);
-  rightY += 6;
+  rightY += 7;
+
+  addRoundedRect(rightColX, rightY, 60, 22, 2, 'F', colors.white);
+  addShadow(rightColX, rightY, 60, 22, 2);
 
   const certs = [
     'Business Strategy',
-    'Leadership & Mgmt',
-    'Stakeholder Mgmt'
+    'Leadership & Management',
+    'Stakeholder Management'
   ];
 
   doc.setFontSize(7.5);
   doc.setFont('helvetica', 'normal');
+  let certY = rightY + 5;
   certs.forEach((cert) => {
     doc.setFillColor(...colors.primary);
-    doc.circle(rightColX + 1, rightY + 1.5, 0.8, 'F');
+    doc.circle(rightColX + 3, certY, 0.8, 'F');
     doc.setTextColor(...colors.text);
-    doc.text(cert, rightColX + 4, rightY + 3);
-    rightY += 5.5;
+    doc.text(cert, rightColX + 6, certY + 1);
+    certY += 6;
   });
 
-  // ===== LEFT MAIN CONTENT =====
+  // ===== LEFT COLUMN - PAGE 1 =====
 
   // Professional Summary
   doc.setFontSize(13);
@@ -337,13 +279,7 @@ const generateResumePDF = () => {
     }
   ];
 
-  experiences.forEach((exp, idx) => {
-    // Check if we need a new page
-    if (leftY > 250) {
-      doc.addPage();
-      leftY = 20;
-    }
-
+  experiences.forEach((exp) => {
     // Calculate card height
     const pointsHeight = exp.points.reduce((total, point) => {
       const lines = doc.splitTextToSize(point, 105);
@@ -351,11 +287,16 @@ const generateResumePDF = () => {
     }, 0);
     const cardHeight = 22 + pointsHeight;
 
+    // Check page break
+    if (leftY + cardHeight > 285) {
+      doc.addPage();
+      leftY = 20;
+    }
+
     // Experience Card
     addShadow(15, leftY, 115, cardHeight, 2);
     addRoundedRect(15, leftY, 115, cardHeight, 2, 'F', colors.white);
 
-    // Company & Role
     doc.setFontSize(11);
     doc.setFont('helvetica', 'bold');
     doc.setTextColor(...colors.dark);
@@ -371,7 +312,6 @@ const generateResumePDF = () => {
     doc.setTextColor(...colors.textLight);
     doc.text(`${exp.period} | ${exp.location}`, 18, leftY + 16);
 
-    // Separator line
     doc.setDrawColor(...colors.bgCard);
     doc.setLineWidth(0.3);
     doc.line(18, leftY + 18, 127, leftY + 18);
@@ -390,38 +330,126 @@ const generateResumePDF = () => {
     leftY += cardHeight + 6;
   });
 
-  // Personal Project
-  if (leftY < 240) {
-    doc.setFontSize(13);
-    doc.setFont('helvetica', 'bold');
-    doc.setTextColor(...colors.primary);
-    doc.text('PERSONAL PROJECT', 15, leftY);
-    leftY += 2;
-    doc.setDrawColor(...colors.primary);
-    doc.setLineWidth(1);
-    doc.line(15, leftY, 47, leftY);
-    leftY += 8;
+  // ===== PAGE 2 =====
+  doc.addPage();
+  
+  let page2Y = 20;
 
-    addShadow(15, leftY, 115, 22, 2);
-    addRoundedRect(15, leftY, 115, 22, 2, 'F', colors.bgLight);
+  // Core Skills - Full Width on Page 2
+  doc.setFontSize(14);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(...colors.primary);
+  doc.text('CORE SKILLS & COMPETENCIES', 15, page2Y);
+  page2Y += 2;
+  doc.setDrawColor(...colors.primary);
+  doc.setLineWidth(1.2);
+  doc.line(15, page2Y, 65, page2Y);
+  page2Y += 10;
+
+  const skillCategories = [
+    {
+      title: 'Operations & Management',
+      skills: ['Operations Management', 'Process Optimization', 'Workflow Coordination', 'Resource Planning']
+    },
+    {
+      title: 'Customer Success',
+      skills: ['Customer Retention', 'Account Management', 'Client Engagement', 'Satisfaction Improvement']
+    },
+    {
+      title: 'Leadership & Training',
+      skills: ['Team Leadership', 'Performance Coaching', 'Training & Development', 'Talent Management']
+    },
+    {
+      title: 'Communication & Support',
+      skills: ['Communication Excellence', 'Virtual Assistance', 'Stakeholder Management', 'Cross-functional Collaboration']
+    },
+    {
+      title: 'Analysis & Reporting',
+      skills: ['Analytics & Reporting', 'KPI Tracking', 'Performance Metrics', 'Data-Driven Decisions']
+    },
+    {
+      title: 'Problem Solving',
+      skills: ['Problem Resolution', 'Critical Thinking', 'Escalation Handling', 'Decision Making']
+    }
+  ];
+
+  const colWidth = 90;
+  let col1Y = page2Y;
+  let col2Y = page2Y;
+
+  skillCategories.forEach((category, idx) => {
+    const isLeftCol = idx % 2 === 0;
+    const xPos = isLeftCol ? 15 : 110;
+    let yPos = isLeftCol ? col1Y : col2Y;
+
+    // Category card
+    addShadow(xPos, yPos, colWidth, 32, 2);
+    addRoundedRect(xPos, yPos, colWidth, 32, 2, 'F', colors.white);
 
     doc.setFontSize(10);
     doc.setFont('helvetica', 'bold');
     doc.setTextColor(...colors.primary);
-    doc.text('BizControl.tech', 18, leftY + 6);
+    doc.text(category.title, xPos + 3, yPos + 6);
 
-    doc.setFontSize(8);
-    doc.setFont('helvetica', 'normal');
-    doc.setTextColor(...colors.text);
-    const projectDesc = 'Personal operations management project exploring better ways of managing tasks, tracking productivity, and improving operational visibility for small teams.';
-    const projectLines = doc.splitTextToSize(projectDesc, 110);
-    doc.text(projectLines, 18, leftY + 11);
-  }
+    doc.setDrawColor(...colors.bgCard);
+    doc.setLineWidth(0.3);
+    doc.line(xPos + 3, yPos + 8, xPos + colWidth - 3, yPos + 8);
+
+    let skillY = yPos + 13;
+    category.skills.forEach((skill) => {
+      doc.setFillColor(...colors.primary);
+      doc.circle(xPos + 4, skillY, 0.7, 'F');
+      doc.setFontSize(7.5);
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor(...colors.text);
+      doc.text(skill, xPos + 7, skillY + 1);
+      skillY += 4.5;
+    });
+
+    if (isLeftCol) {
+      col1Y = yPos + 38;
+    } else {
+      col2Y = yPos + 38;
+    }
+  });
+
+  page2Y = Math.max(col1Y, col2Y) + 5;
+
+  // Personal Project
+  doc.setFontSize(14);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(...colors.primary);
+  doc.text('PERSONAL PROJECT', 15, page2Y);
+  page2Y += 2;
+  doc.setDrawColor(...colors.primary);
+  doc.setLineWidth(1.2);
+  doc.line(15, page2Y, 50, page2Y);
+  page2Y += 10;
+
+  addShadow(15, page2Y, 180, 28, 2);
+  addRoundedRect(15, page2Y, 180, 28, 2, 'F', colors.bgLight);
+
+  doc.setFontSize(11);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(...colors.primary);
+  doc.text('BizControl.tech', 18, page2Y + 7);
+
+  doc.setFontSize(8);
+  doc.setFont('helvetica', 'italic');
+  doc.setTextColor(...colors.textLight);
+  doc.text('Personal Operations Management Platform', 18, page2Y + 12);
+
+  doc.setFontSize(8.5);
+  doc.setFont('helvetica', 'normal');
+  doc.setTextColor(...colors.text);
+  const projectDesc = 'A self-initiated project exploring better ways of managing tasks, tracking productivity, and improving operational visibility for small teams. This platform demonstrates my understanding of operations challenges and my ability to develop practical solutions.';
+  const projectLines = doc.splitTextToSize(projectDesc, 175);
+  doc.text(projectLines, 18, page2Y + 17);
 
   // Footer
   doc.setFontSize(7);
   doc.setTextColor(...colors.textLight);
-  doc.text('Generated from professional portfolio | Available for Remote Work | Open to Leadership & Operations Roles', pageWidth / 2, pageHeight - 8, { align: 'center' });
+  doc.text('Professional Portfolio | Available for Remote Work | Open to Leadership & Operations Roles', pageWidth / 2, pageHeight - 8, { align: 'center' });
 
   // Save PDF
   doc.save('Saurabh_Mishra_Resume.pdf');
