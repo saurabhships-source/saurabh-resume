@@ -4,33 +4,33 @@ import { Target, TrendingUp, Shield, Zap, CheckCircle } from 'lucide-react';
 
 const About = () => {
   const achievements = [
-    'Reduced customer churn by 28% at Citi Bank through data-driven retention strategies',
-    'Led teams of 30+ members achieving consistent 96%+ KPI compliance',
-    'Improved operational efficiency by 35% through process optimization initiatives',
-    'Managed 200+ high-value escalations with 94% client satisfaction rate',
-    'Trained 50+ associates, accelerating team productivity and reducing onboarding time by 40%'
+    'Contributed to improving customer retention rates through targeted follow-up strategies and account management',
+    'Managed and coordinated teams of up to 30 members, tracking KPIs and supporting performance goals',
+    'Worked on process optimization initiatives that helped reduce response times and improve workflow efficiency',
+    'Handled 200+ customer escalations with a 94% satisfaction rate by providing timely resolutions',
+    'Trained new team members on processes and quality standards, helping reduce onboarding time'
   ];
 
   const coreStrengths = [
     {
       icon: Target,
-      title: 'Operations Excellence',
-      description: 'Transform chaotic processes into streamlined, scalable operations that drive measurable business growth'
+      title: 'Operations Management',
+      description: 'Support day-to-day operations, process improvements, and workflow coordination across teams'
     },
     {
       icon: TrendingUp,
-      title: 'Revenue Retention',
-      description: 'Proven track record of reducing churn and retaining $2M+ in revenue through strategic customer lifecycle management'
+      title: 'Customer Retention',
+      description: 'Work on retention strategies, account management, and initiatives to reduce customer churn'
     },
     {
       icon: Shield,
-      title: 'Crisis Management',
-      description: 'Handle high-pressure escalations with composure, turning dissatisfied clients into brand advocates'
+      title: 'Problem Resolution',
+      description: 'Handle escalations professionally, working to resolve issues and maintain customer satisfaction'
     },
     {
       icon: Zap,
-      title: 'Team Leadership',
-      description: 'Build and coach high-performing teams that consistently exceed targets and maintain top-tier performance'
+      title: 'Team Coordination',
+      description: 'Support and guide team members, track performance, and help achieve operational targets'
     }
   ];
 
@@ -81,28 +81,28 @@ const About = () => {
             <motion.div className="space-y-4" variants={itemVariants}>
               <h3 className="text-sm font-bold text-navy-600 uppercase tracking-wide">About Me</h3>
               <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                I Don't Just Manage Operations—I Transform Them
+                Experienced in Operations, Retention, and Team Management
               </h2>
             </motion.div>
 
             <motion.div className="space-y-5 text-lg text-gray-700 leading-relaxed" variants={itemVariants}>
-              <p className="font-semibold text-gray-900">
-                I'm not your typical operations manager. I'm the person companies call when they need someone who can 
-                walk into chaos and create order—fast.
+              <p>
+                I have over 6 years of experience working in operations and customer support roles across organizations 
+                like <strong>TCS (Citi Bank)</strong>, <strong>Concentrix (JP Morgan Chase)</strong>, and <strong>Accenture</strong>.
               </p>
               <p>
-                Over 6 years, I've worked with <strong>TCS (Citi Bank)</strong>, <strong>Concentrix (JP Morgan Chase)</strong>, 
-                and <strong>Accenture</strong>—leading teams, fixing broken processes, and driving retention strategies that 
-                saved millions in revenue.
+                My work has focused on supporting teams, handling customer escalations, improving processes, and contributing 
+                to retention initiatives. I've worked in fast-paced environments where attention to detail, clear communication, 
+                and problem-solving are essential.
               </p>
               <p>
-                I thrive in high-pressure environments. Whether it's managing escalations from Fortune 500 clients, 
-                coaching underperforming teams into top performers, or building systems that scale—I deliver results 
-                that matter to the bottom line.
+                I'm comfortable managing daily operations, coordinating with cross-functional teams, and working on initiatives 
+                that help improve efficiency and customer satisfaction. I also have experience training new team members and 
+                supporting their development.
               </p>
               <p className="text-navy-600 font-semibold">
-                If you need someone who can hit the ground running, lead with confidence, and make an immediate impact—
-                let's talk.
+                I'm looking for roles where I can apply my experience in operations management, customer retention, and team 
+                coordination to help organizations run smoothly and achieve their goals.
               </p>
             </motion.div>
 
@@ -111,7 +111,7 @@ const About = () => {
               className="bg-gradient-to-br from-navy-50 to-blue-50 rounded-xl p-6 border-l-4 border-navy-600"
               variants={itemVariants}
             >
-              <h4 className="text-lg font-bold text-gray-900 mb-4">Key Career Achievements</h4>
+              <h4 className="text-lg font-bold text-gray-900 mb-4">Key Contributions</h4>
               <ul className="space-y-3">
                 {achievements.map((achievement, idx) => (
                   <motion.li
@@ -141,7 +141,7 @@ const About = () => {
           >
             <motion.img
               src="https://images.unsplash.com/photo-1622675205169-901710ac8643"
-              alt="Professional Team Leadership"
+              alt="Professional Team Collaboration"
               className="rounded-2xl shadow-2xl w-full h-[400px] object-cover"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}

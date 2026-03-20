@@ -1,146 +1,68 @@
 import React from 'react';
-import { Building2, Calendar, MapPin, TrendingUp, Award } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Building2, Calendar, MapPin, ChevronRight } from 'lucide-react';
 
 const Experience = () => {
   const experiences = [
     {
       company: 'TCS (Citi Bank)',
       role: 'Account Retention Manager',
-      period: '2024 - 2026',
+      period: 'Jan 2024 - Present',
       location: 'Remote',
-      impact: {
-        metric: '28% Churn Reduction',
-        description: 'Delivered $1.2M+ in retained revenue'
-      },
-      achievements: [
-        {
-          title: 'Reduced customer churn by 28%',
-          description: 'Designed and executed data-driven retention strategies targeting high-risk accounts, resulting in $1.2M+ retained annual revenue'
-        },
-        {
-          title: 'Optimized customer lifecycle management',
-          description: 'Implemented proactive engagement framework reducing reactive escalations by 45% and improving customer lifetime value'
-        },
-        {
-          title: 'Built retention playbook',
-          description: 'Created standardized retention workflows adopted across 3 regional teams, increasing save rate from 62% to 84%'
-        },
-        {
-          title: 'Cross-functional collaboration',
-          description: 'Partnered with product and service teams to resolve systemic issues causing 60% of cancellations, improving NPS by 18 points'
-        }
+      responsibilities: [
+        'Work on customer retention strategies by identifying at-risk accounts and implementing targeted follow-up processes',
+        'Handle customer lifecycle management activities including account reviews, feedback collection, and relationship building',
+        'Coordinate with cross-functional teams to address customer concerns and improve service delivery',
+        'Contributed to reducing account cancellations through proactive outreach and personalized support'
       ]
     },
     {
       company: 'Concentrix (JP Morgan Chase)',
       role: 'Retention Manager',
-      period: '2024',
+      period: 'Mar 2024 - Dec 2024',
       location: 'Remote',
-      impact: {
-        metric: '94% CSAT Rate',
-        description: 'Managed 200+ high-value escalations'
-      },
-      achievements: [
-        {
-          title: 'Handled 200+ critical escalations with 94% satisfaction rate',
-          description: 'Managed high-stakes client issues for premium banking customers, maintaining exceptional service standards under pressure'
-        },
-        {
-          title: 'Recovered at-risk relationships',
-          description: 'Successfully retained 78% of escalated accounts through personalized intervention strategies and executive-level communication'
-        },
-        {
-          title: 'Streamlined escalation process',
-          description: 'Reduced average resolution time from 72 hours to 24 hours through improved workflows and stakeholder coordination'
-        },
-        {
-          title: 'Provided strategic insights',
-          description: 'Analyzed escalation patterns and delivered actionable recommendations that reduced repeat issues by 35%'
-        }
+      responsibilities: [
+        'Managed high-priority customer escalations for premium banking clients, maintaining a 94% satisfaction rate',
+        'Worked on resolving complex account issues by coordinating with internal teams and providing timely solutions',
+        'Supported retention efforts by analyzing escalation patterns and suggesting process improvements',
+        'Handled sensitive customer interactions professionally while balancing customer needs and company policies'
       ]
     },
     {
       company: 'Accenture (Verizon & Facebook)',
       role: 'Client Support Associate & Trainer',
-      period: '2019 - 2024',
+      period: 'Jun 2019 - Feb 2024',
       location: 'Mumbai',
-      impact: {
-        metric: '35% Productivity Boost',
-        description: 'Trained 50+ team members'
-      },
-      achievements: [
-        {
-          title: 'Trained 50+ associates, improving productivity by 35%',
-          description: 'Designed and delivered comprehensive training programs that reduced onboarding time by 40% and accelerated time-to-competency'
-        },
-        {
-          title: 'Exceeded performance metrics consistently',
-          description: 'Maintained 96%+ quality scores while handling complex client support across multiple channels (voice, chat, email)'
-        },
-        {
-          title: 'Led process improvement initiatives',
-          description: 'Identified and implemented efficiency improvements that saved 120+ hours monthly across the team, earning Quality Champion award'
-        },
-        {
-          title: 'Managed high-value client relationships',
-          description: 'Served as escalation point for VIP clients, maintaining 92% first-contact resolution and strengthening client partnerships'
-        }
+      responsibilities: [
+        'Provided multi-channel customer support (voice, chat, email) for Verizon and Facebook client accounts',
+        'Trained new team members on processes, tools, and quality standards, helping reduce onboarding time',
+        'Worked on process improvement suggestions that were implemented to enhance team efficiency',
+        'Maintained consistent quality scores above 95% while handling high volumes of customer interactions',
+        'Supported team leads with performance tracking and quality audits'
       ]
     },
     {
       company: 'Vidyalankar',
       role: 'Branch Head',
-      period: '2018 - 2019',
+      period: 'Apr 2018 - May 2019',
       location: 'Mumbai',
-      impact: {
-        metric: '40% Revenue Growth',
-        description: 'Full P&L ownership'
-      },
-      achievements: [
-        {
-          title: 'Grew branch revenue by 40% year-over-year',
-          description: 'Led complete branch operations including sales, operations, and team management, driving consistent double-digit growth'
-        },
-        {
-          title: 'Managed end-to-end operations',
-          description: 'Oversaw daily operations, financial administration, attendance, payroll, and performance management for 15+ staff members'
-        },
-        {
-          title: 'Implemented operational excellence programs',
-          description: 'Established SOPs and quality standards that improved service delivery efficiency by 30% and customer satisfaction by 25%'
-        },
-        {
-          title: 'Built high-performing sales team',
-          description: 'Recruited, trained, and managed sales team that consistently exceeded monthly targets by 15-20%'
-        }
+      responsibilities: [
+        'Managed daily branch operations including sales coordination, administration, and team supervision',
+        'Oversaw operational activities such as attendance tracking, payment processing, and staff management',
+        'Supported business growth initiatives through local marketing and customer engagement efforts',
+        'Worked on improving operational processes to enhance efficiency and customer experience'
       ]
     },
     {
       company: 'Karvy Digikonnect (Bharti AXA)',
       role: 'Team Leader',
-      period: '2017 - 2018',
+      period: 'Jan 2017 - Mar 2018',
       location: 'Mumbai',
-      impact: {
-        metric: '96% KPI Compliance',
-        description: 'Led 30-member team'
-      },
-      achievements: [
-        {
-          title: 'Led 30-member team achieving 96%+ KPI compliance',
-          description: 'Managed daily operations, performance tracking, and goal achievement for large team, maintaining industry-leading metrics'
-        },
-        {
-          title: 'Implemented performance management system',
-          description: 'Developed KRA/KPI tracking framework and coaching programs that improved team productivity by 28%'
-        },
-        {
-          title: 'Created data-driven reporting',
-          description: 'Built comprehensive analytics dashboards providing real-time visibility into team performance for management decision-making'
-        },
-        {
-          title: 'Reduced team attrition by 35%',
-          description: 'Implemented employee engagement initiatives and career development programs that significantly improved retention and morale'
-        }
+      responsibilities: [
+        'Led a team of 30 associates, managing daily operations, performance tracking, and quality monitoring',
+        'Tracked team KPIs and KRAs, providing regular performance reports to management',
+        'Conducted coaching sessions and performance reviews to help team members meet their goals',
+        'Worked on improving team productivity through process refinements and motivational initiatives'
       ]
     }
   ];
@@ -148,21 +70,31 @@ const Experience = () => {
   return (
     <section id="experience" className="py-20 bg-white">
       <div className="container mx-auto px-6 lg:px-12">
-        <div className="text-center space-y-4 mb-16">
+        <motion.div
+          className="text-center space-y-4 mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <h3 className="text-sm font-bold text-navy-600 uppercase tracking-wide">Career Journey</h3>
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900">
-            Proven Track Record of Impact
+            Professional Experience
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            6+ years of delivering measurable results across Fortune 500 organizations
+            6+ years working in operations, customer support, and team management roles
           </p>
-        </div>
+        </motion.div>
 
         <div className="max-w-6xl mx-auto space-y-8">
           {experiences.map((exp, index) => (
-            <div
+            <motion.div
               key={index}
               className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               {/* Header */}
               <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-6 pb-6 border-b border-gray-200">
@@ -185,30 +117,18 @@ const Experience = () => {
                     </div>
                   </div>
                 </div>
-
-                {/* Impact Badge */}
-                <div className="mt-4 lg:mt-0 bg-navy-600 text-white rounded-xl p-4 text-center min-w-[200px]">
-                  <div className="flex items-center justify-center space-x-2 mb-1">
-                    <Award className="w-5 h-5" />
-                    <div className="text-2xl font-bold">{exp.impact.metric}</div>
-                  </div>
-                  <div className="text-sm text-blue-100">{exp.impact.description}</div>
-                </div>
               </div>
 
-              {/* Achievements */}
-              <div className="space-y-4">
-                {exp.achievements.map((achievement, idx) => (
+              {/* Responsibilities */}
+              <div className="space-y-3">
+                {exp.responsibilities.map((responsibility, idx) => (
                   <div key={idx} className="flex items-start space-x-3">
-                    <TrendingUp className="w-5 h-5 text-navy-600 mt-1 flex-shrink-0" />
-                    <div>
-                      <h4 className="font-bold text-gray-900 mb-1">{achievement.title}</h4>
-                      <p className="text-gray-700 leading-relaxed">{achievement.description}</p>
-                    </div>
+                    <ChevronRight className="w-5 h-5 text-navy-600 mt-0.5 flex-shrink-0" />
+                    <p className="text-gray-700 leading-relaxed">{responsibility}</p>
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

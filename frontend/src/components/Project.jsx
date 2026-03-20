@@ -15,10 +15,10 @@ const Project = () => {
         >
           <h3 className="text-sm font-bold text-navy-600 uppercase tracking-wide">Personal Initiative</h3>
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900">
-            Building Real Solutions
+            Personal Project
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Self-driven SaaS platform solving real operational challenges for growing businesses
+            A self-initiated project to explore operations management and productivity tools
           </p>
         </motion.div>
 
@@ -55,24 +55,26 @@ const Project = () => {
                   </div>
                   <div>
                     <h3 className="text-3xl font-bold text-gray-900">BizControl.tech</h3>
-                    <p className="text-navy-600 text-sm font-semibold">SaaS Operations Management Platform</p>
+                    <p className="text-navy-600 text-sm font-semibold">Personal Operations Management Project</p>
                   </div>
                 </div>
 
                 <div className="space-y-4 mb-6">
                   <div>
-                    <h4 className="font-bold text-gray-900 mb-2">The Problem</h4>
+                    <h4 className="font-bold text-gray-900 mb-2">About This Project</h4>
                     <p className="text-gray-700 leading-relaxed">
-                      Most SMBs struggle with scattered task management, inconsistent team productivity, and lack of 
-                      operational visibility—leading to missed deadlines, inefficiency, and poor resource utilization.
+                      BizControl is a personal project I started to explore better ways of managing tasks, tracking productivity, 
+                      and improving operational visibility. It's something I've been working on to understand the challenges teams 
+                      face with scattered tools and inefficient workflows.
                     </p>
                   </div>
 
                   <div>
-                    <h4 className="font-bold text-gray-900 mb-2">The Solution</h4>
+                    <h4 className="font-bold text-gray-900 mb-2">What I'm Building</h4>
                     <p className="text-gray-700 leading-relaxed">
-                      BizControl is an all-in-one operations management platform that centralizes task management, 
-                      team collaboration, and performance analytics—helping businesses run smoother and scale faster.
+                      The goal is to create a simple platform that helps small teams and managers organize their work better, 
+                      track progress, and identify areas for improvement. It's still a work in progress, but it's helping me 
+                      learn more about operations tools and what makes them effective.
                     </p>
                   </div>
                 </div>
@@ -80,15 +82,15 @@ const Project = () => {
                 <div className="space-y-3 mb-8">
                   <h4 className="font-semibold text-gray-900 flex items-center space-x-2">
                     <Code2 className="w-5 h-5 text-navy-600" />
-                    <span>Core Capabilities:</span>
+                    <span>Features I'm Working On:</span>
                   </h4>
                   <div className="space-y-2">
                     {[
-                      'Intelligent Task & Project Management with automation',
-                      'Real-time Team Productivity Analytics & Insights',
-                      'Customizable Operations Dashboards',
-                      'Process Workflow Builder & Optimization Tools',
-                      'Integration with existing business tools'
+                      'Task and project organization with priority tracking',
+                      'Team activity visibility and progress monitoring',
+                      'Basic reporting and analytics',
+                      'Process workflow templates',
+                      'Simple integrations with common tools'
                     ].map((feature, idx) => (
                       <div key={idx} className="flex items-start space-x-3">
                         <CheckCircle2 className="w-5 h-5 text-navy-600 mt-0.5 flex-shrink-0" />
@@ -101,15 +103,15 @@ const Project = () => {
                 <div className="bg-navy-50 rounded-lg p-4 mb-6 border border-navy-100">
                   <div className="flex items-center space-x-2 mb-2">
                     <Target className="w-4 h-4 text-navy-600" />
-                    <div className="text-sm text-navy-700 font-semibold">Target Users</div>
+                    <div className="text-sm text-navy-700 font-semibold">Intended For</div>
                   </div>
-                  <div className="text-gray-900 font-semibold">SMBs, Operations Managers, Remote Teams, Growing Startups</div>
+                  <div className="text-gray-900 font-medium">Small teams, operations managers, and remote teams looking for simpler workflow tools</div>
                 </div>
 
                 <div className="flex flex-wrap gap-4 items-center">
-                  <div className="inline-flex items-center space-x-2 bg-green-100 px-4 py-2 rounded-lg text-sm border border-green-300">
-                    <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                    <span className="text-green-700 font-semibold">Active Development</span>
+                  <div className="inline-flex items-center space-x-2 bg-amber-100 px-4 py-2 rounded-lg text-sm border border-amber-300">
+                    <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+                    <span className="text-amber-700 font-semibold">In Development</span>
                   </div>
                   <a
                     href="https://bizcontrol.tech"
@@ -117,7 +119,7 @@ const Project = () => {
                     rel="noopener noreferrer"
                     className="inline-flex items-center space-x-2 bg-navy-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-navy-700 transition-colors shadow-lg"
                   >
-                    <span>Visit Platform</span>
+                    <span>Learn More</span>
                     <ExternalLink className="w-4 h-4" />
                   </a>
                 </div>
@@ -127,10 +129,10 @@ const Project = () => {
 
           <div className="mt-8 bg-gradient-to-r from-blue-50 to-navy-50 rounded-xl p-6 border border-blue-200">
             <p className="text-gray-700 leading-relaxed">
-              <strong className="text-navy-600">Why This Matters:</strong> This project demonstrates my entrepreneurial mindset 
-              and ability to identify real business problems. It showcases technical understanding, product thinking, and 
-              my passion for building solutions that improve operational efficiency—skills that translate directly into 
-              value for any organization.
+              <strong className="text-navy-600">Why I'm Building This:</strong> This project helps me understand operations 
+              challenges from a different perspective and explore technical solutions. It's a learning experience that combines 
+              my operational knowledge with practical problem-solving, and it gives me insights into what teams actually need 
+              from their tools.
             </p>
           </div>
         </div>

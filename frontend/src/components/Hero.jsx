@@ -1,7 +1,7 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useRef, useState } from 'react';
+import { motion, useInView, useAnimation } from 'framer-motion';
 import { Button } from './ui/button';
-import { MapPin, Briefcase, Download, Mail, TrendingUp, Users, Award, Target } from 'lucide-react';
+import { MapPin, Briefcase, Download, Mail, TrendingUp, Users, Award, Calendar } from 'lucide-react';
 import AnimatedCounter from './AnimatedCounter';
 
 const Hero = () => {
@@ -17,10 +17,10 @@ const Hero = () => {
   };
 
   const stats = [
-    { icon: Briefcase, value: 6, suffix: '+', label: 'Years Experience' },
-    { icon: Users, value: 100, suffix: '+', label: 'Team Members Led' },
-    { icon: TrendingUp, value: 35, suffix: '%', label: 'Avg. Efficiency Gain' },
-    { icon: Award, value: 95, suffix: '%+', label: 'Client Satisfaction' }
+    { icon: Calendar, value: 6, suffix: '+', label: 'Years Experience' },
+    { icon: Users, value: 30, suffix: '+', label: 'Team Members Managed' },
+    { icon: TrendingUp, value: 35, suffix: '%', label: 'Process Improvements' },
+    { icon: Award, value: 94, suffix: '%', label: 'Client Satisfaction' }
   ];
 
   const containerVariants = {
@@ -76,7 +76,7 @@ const Hero = () => {
               <motion.div variants={itemVariants}>
                 <div className="inline-flex items-center space-x-2 bg-green-100 px-4 py-2 rounded-full border border-green-300">
                   <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-                  <span className="text-sm font-semibold text-green-700">Available for Immediate Hire</span>
+                  <span className="text-sm font-semibold text-green-700">Open to Opportunities</span>
                 </div>
               </motion.div>
               
@@ -88,10 +88,10 @@ const Hero = () => {
               </motion.h1>
               
               <motion.h2
-                className="text-xl lg:text-2xl text-navy-600 font-bold leading-relaxed"
+                className="text-xl lg:text-2xl text-navy-600 font-semibold leading-relaxed"
                 variants={itemVariants}
               >
-                Operations & Retention Excellence Leader | 6+ Years Driving Business Growth | Ex-Citi, JP Morgan, Accenture
+                Operations Manager | Customer Retention Specialist | Team Leader
               </motion.h2>
               
               <motion.div
@@ -100,11 +100,11 @@ const Hero = () => {
               >
                 <div className="flex items-center space-x-2">
                   <MapPin className="w-5 h-5 text-navy-600" />
-                  <span className="font-medium">India (Remote)</span>
+                  <span className="font-medium">Dombivli, India (Remote)</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <Target className="w-5 h-5 text-navy-600" />
-                  <span className="font-medium">Operations Manager</span>
+                  <Briefcase className="w-5 h-5 text-navy-600" />
+                  <span className="font-medium">6+ Years</span>
                 </div>
               </motion.div>
             </div>
@@ -113,9 +113,9 @@ const Hero = () => {
               className="text-lg text-gray-700 leading-relaxed font-medium border-l-4 border-navy-600 pl-4"
               variants={itemVariants}
             >
-              Proven operations leader who transforms underperforming teams into high-achievers and reduces churn through 
-              data-driven retention strategies. Delivered <strong className="text-navy-600">$2M+ in retained revenue</strong> across 
-              Fortune 500 clients.
+              I work on improving operations, managing teams, and handling customer retention challenges in fast-paced environments. 
+              I have 6+ years of experience across TCS (Citi Bank), Concentrix (JP Morgan Chase), and Accenture, where I've supported 
+              process improvements, team coordination, and customer satisfaction initiatives.
             </motion.p>
 
             <motion.div
@@ -128,7 +128,7 @@ const Hero = () => {
                 className="bg-navy-600 hover:bg-navy-700 text-white px-8 py-6 text-lg font-semibold transition-all shadow-lg hover:shadow-xl hover:scale-105"
               >
                 <Mail className="w-5 h-5 mr-2" />
-                Hire Me
+                Get In Touch
               </Button>
               <Button
                 onClick={handleDownloadResume}
