@@ -41,9 +41,10 @@ const generateResumePDF = () => {
   };
 
   const addShadow = (x, y, w, h, r) => {
-    // Subtle shadow effect
-    doc.setFillColor(0, 0, 0, 0.05);
-    doc.roundedRect(x + 0.5, y + 0.5, w, h, r, r, 'F');
+    doc.setFillColor(200, 200, 200);
+    doc.setGState(doc.GState({ opacity: 0.15 }));
+    doc.roundedRect(x + 0.8, y + 0.8, w, h, r, r, 'F');
+    doc.setGState(doc.GState({ opacity: 1 }));
   };
 
   const addText = (text, x, y, size, style = 'normal', color = colors.text, maxWidth = null) => {
@@ -60,20 +61,9 @@ const generateResumePDF = () => {
     }
   };
 
-  const addIcon = (icon, x, y, size, color = colors.primary) => {
-    doc.setFontSize(size);
-    doc.setTextColor(...color);
-    doc.text(icon, x, y);
-  };
-
   // ===== HEADER SECTION (Full Width) =====
-  // Premium gradient-style header
   doc.setFillColor(...colors.primary);
-  doc.rect(0, 0, pageWidth, 65, 'F');
-
-  // Add subtle overlay effect
-  doc.setFillColor(255, 255, 255, 0.05);
-  doc.rect(0, 0, pageWidth, 65, 'F');
+  doc.rect(0, 0, pageWidth, 60, 'F');
 
   // Name - Large and Bold
   doc.setFontSize(32);
@@ -82,52 +72,55 @@ const generateResumePDF = () => {
   doc.text('SAURABH MISHRA', 15, 22);
 
   // Role/Title
-  doc.setFontSize(12);
+  doc.setFontSize(11);
   doc.setFont('helvetica', 'normal');
-  doc.setTextColor(219, 234, 254); // Light blue
+  doc.setTextColor(219, 234, 254);
   doc.text('Operations Manager | Customer Retention Specialist | Team Leader', 15, 30);
 
   // Horizontal line separator
-  doc.setDrawColor(255, 255, 255, 0.3);
+  doc.setDrawColor(255, 255, 255);
+  doc.setGState(doc.GState({ opacity: 0.3 }));
   doc.setLineWidth(0.3);
   doc.line(15, 34, 195, 34);
+  doc.setGState(doc.GState({ opacity: 1 }));
 
-  // Contact Information with Icons
-  const contactInfo = [
-    { icon: '📧', text: 'saurabhmishra33555@gmail.com', x: 15 },
-    { icon: '📱', text: '+91 9867179669 / 9155361659', x: 90 },
-    { icon: '📍', text: 'Dombivli, India (Remote)', x: 15 },
-    { icon: '🔗', text: 'linkedin.com/in/saurabh-mishra-004a98383', x: 90 }
-  ];
-
-  doc.setFontSize(9);
+  // Contact Information - Clean text only
+  doc.setFontSize(8.5);
+  doc.setFont('helvetica', 'normal');
   doc.setTextColor(...colors.white);
-  contactInfo.forEach((item, idx) => {
-    const yPos = 42 + (idx % 2) * 6;
-    doc.text(item.icon, item.x, yPos);
-    doc.text(item.text, item.x + 5, yPos);
-  });
+  
+  doc.text('Email:', 15, 40);
+  doc.text('saurabhmishra33555@gmail.com', 26, 40);
+  
+  doc.text('Phone:', 90, 40);
+  doc.text('+91 9867179669 / 9155361659', 102, 40);
+  
+  doc.text('Location:', 15, 45);
+  doc.text('Dombivli, India (Remote)', 31, 45);
+  
+  doc.text('LinkedIn:', 90, 45);
+  doc.text('linkedin.com/in/saurabh-mishra-004a98383', 105, 45);
+  
+  doc.text('Portfolio:', 15, 50);
+  doc.text('bizcontrol.tech', 31, 50);
 
-  // Portfolio link
-  doc.setFontSize(9);
-  doc.setFont('helvetica', 'bold');
-  doc.text('🌐 bizcontrol.tech', 15, 54);
-
-  leftY = 75;
-  rightY = 75;
+  leftY = 70;
+  rightY = 70;
 
   // ===== RIGHT SIDEBAR =====
   
-  // Profile Image Placeholder (with border)
+  // Profile Image Placeholder
   addShadow(rightColX, rightY, 60, 60, 3);
-  doc.setFillColor(...colors.bgCard);
+  doc.setFillColor(240, 240, 245);
   doc.roundedRect(rightColX, rightY, 60, 60, 3, 3, 'F');
-  doc.setFillColor(...colors.primary);
-  doc.setFontSize(10);
+  doc.setDrawColor(...colors.primary);
+  doc.setLineWidth(0.5);
+  doc.roundedRect(rightColX, rightY, 60, 60, 3, 3, 'S');
+  
+  doc.setFontSize(9);
   doc.setTextColor(...colors.textLight);
-  doc.text('Professional', rightColX + 30, rightY + 25, { align: 'center' });
-  doc.text('Photo', rightColX + 30, rightY + 32, { align: 'center' });
-  doc.text('(Upload on website)', rightColX + 30, rightY + 39, { align: 'center' });
+  doc.text('Professional', rightColX + 30, rightY + 27, { align: 'center' });
+  doc.text('Photo', rightColX + 30, rightY + 33, { align: 'center' });
   rightY += 68;
 
   // Key Metrics Cards
@@ -138,30 +131,27 @@ const generateResumePDF = () => {
   rightY += 8;
 
   const metrics = [
-    { icon: '📅', value: '6+', label: 'Years Exp.' },
-    { icon: '👥', value: '30+', label: 'Team Members' },
-    { icon: '📈', value: '35%', label: 'Improvements' },
-    { icon: '⭐', value: '94%', label: 'Satisfaction' }
+    { value: '6+', label: 'Years Experience' },
+    { value: '30+', label: 'Team Members' },
+    { value: '35%', label: 'Process Improvements' },
+    { value: '94%', label: 'Client Satisfaction' }
   ];
 
   metrics.forEach((metric) => {
-    addShadow(rightColX, rightY, 60, 20, 2);
-    addRoundedRect(rightColX, rightY, 60, 20, 2, 'F', colors.white);
-    
-    doc.setFontSize(9);
-    doc.text(metric.icon, rightColX + 3, rightY + 7);
+    addShadow(rightColX, rightY, 60, 18, 2);
+    addRoundedRect(rightColX, rightY, 60, 18, 2, 'F', colors.white);
     
     doc.setFontSize(16);
     doc.setFont('helvetica', 'bold');
     doc.setTextColor(...colors.primary);
-    doc.text(metric.value, rightColX + 30, rightY + 9, { align: 'center' });
+    doc.text(metric.value, rightColX + 30, rightY + 8, { align: 'center' });
     
     doc.setFontSize(7);
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(...colors.textLight);
-    doc.text(metric.label, rightColX + 30, rightY + 15, { align: 'center' });
+    doc.text(metric.label, rightColX + 30, rightY + 13.5, { align: 'center' });
     
-    rightY += 23;
+    rightY += 21;
   });
 
   rightY += 5;
@@ -174,26 +164,33 @@ const generateResumePDF = () => {
   rightY += 8;
 
   const skills = [
-    'Operations',
-    'Retention',
-    'Leadership',
-    'Training',
-    'Analytics',
-    'Process Opt.',
-    'Virtual Assist.',
+    'Operations Management',
+    'Customer Retention',
+    'Team Leadership',
+    'Training & Development',
+    'Analytics & Reporting',
+    'Process Optimization',
+    'Virtual Assistance',
     'Communication',
     'Problem Solving',
-    'Team Coord.'
+    'Team Coordination'
   ];
 
   skills.forEach((skill) => {
     const textWidth = doc.getTextWidth(skill);
-    addRoundedRect(rightColX, rightY - 4, textWidth + 5, 6, 1.5, 'F', colors.bgCard);
-    doc.setFontSize(8);
+    addRoundedRect(rightColX, rightY - 4, Math.min(textWidth + 5, 58), 6, 1.5, 'F', colors.bgCard);
+    doc.setFontSize(7.5);
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(...colors.text);
-    doc.text(skill, rightColX + 2.5, rightY);
-    rightY += 8;
+    
+    if (textWidth + 5 > 58) {
+      const lines = doc.splitTextToSize(skill, 56);
+      doc.text(lines, rightColX + 2.5, rightY);
+      rightY += (lines.length * 5) + 2;
+    } else {
+      doc.text(skill, rightColX + 2.5, rightY);
+      rightY += 7;
+    }
   });
 
   rightY += 5;
@@ -211,7 +208,7 @@ const generateResumePDF = () => {
   doc.setFontSize(9);
   doc.setFont('helvetica', 'bold');
   doc.setTextColor(...colors.text);
-  doc.text('BSc', rightColX + 3, rightY + 6);
+  doc.text('Bachelor of Science', rightColX + 3, rightY + 6);
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(7);
   doc.setTextColor(...colors.textLight);
@@ -220,7 +217,7 @@ const generateResumePDF = () => {
   doc.setFontSize(9);
   doc.setFont('helvetica', 'bold');
   doc.setTextColor(...colors.text);
-  doc.text('HSC', rightColX + 3, rightY + 16);
+  doc.text('Higher Secondary', rightColX + 3, rightY + 16);
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(7);
   doc.setTextColor(...colors.textLight);
@@ -237,17 +234,18 @@ const generateResumePDF = () => {
 
   const certs = [
     'Business Strategy',
-    'Leadership Diploma',
+    'Leadership & Mgmt',
     'Stakeholder Mgmt'
   ];
 
-  doc.setFontSize(7);
+  doc.setFontSize(7.5);
   doc.setFont('helvetica', 'normal');
   certs.forEach((cert) => {
+    doc.setFillColor(...colors.primary);
+    doc.circle(rightColX + 1, rightY + 1.5, 0.8, 'F');
     doc.setTextColor(...colors.text);
-    doc.text('✓', rightColX, rightY + 3);
-    doc.text(cert, rightColX + 3, rightY + 3);
-    rightY += 5;
+    doc.text(cert, rightColX + 4, rightY + 3);
+    rightY += 5.5;
   });
 
   // ===== LEFT MAIN CONTENT =====
@@ -263,14 +261,14 @@ const generateResumePDF = () => {
   doc.line(15, leftY, 40, leftY);
   leftY += 8;
 
-  addRoundedRect(15, leftY - 2, 115, 22, 2, 'F', colors.bgLight);
+  addRoundedRect(15, leftY - 2, 115, 24, 2, 'F', colors.bgLight);
   doc.setFontSize(9);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(...colors.text);
   const summary = 'I work on improving operations, managing teams, and handling customer retention challenges in fast-paced environments. I have 6+ years of experience across TCS (Citi Bank), Concentrix (JP Morgan Chase), and Accenture, where I have supported process improvements, team coordination, and customer satisfaction initiatives.';
   const summaryLines = doc.splitTextToSize(summary, 110);
   doc.text(summaryLines, 17, leftY + 3);
-  leftY += 26;
+  leftY += 28;
 
   // Professional Experience
   doc.setFontSize(13);
@@ -341,20 +339,19 @@ const generateResumePDF = () => {
 
   experiences.forEach((exp, idx) => {
     // Check if we need a new page
-    if (leftY > 260) {
+    if (leftY > 250) {
       doc.addPage();
       leftY = 20;
-      
-      // Continue right sidebar on new page if needed
-      if (rightY > 260) {
-        rightY = 20;
-      }
     }
 
-    // Calculate card height based on content
-    const cardHeight = 10 + (exp.points.length * 10);
+    // Calculate card height
+    const pointsHeight = exp.points.reduce((total, point) => {
+      const lines = doc.splitTextToSize(point, 105);
+      return total + (lines.length * 3.5) + 1;
+    }, 0);
+    const cardHeight = 22 + pointsHeight;
 
-    // Experience Card with shadow
+    // Experience Card
     addShadow(15, leftY, 115, cardHeight, 2);
     addRoundedRect(15, leftY, 115, cardHeight, 2, 'F', colors.white);
 
@@ -387,14 +384,14 @@ const generateResumePDF = () => {
       doc.setTextColor(...colors.text);
       const lines = doc.splitTextToSize(point, 105);
       doc.text(lines, 21, pointY);
-      pointY += lines.length * 3.5;
+      pointY += lines.length * 3.5 + 1;
     });
 
-    leftY += cardHeight + 5;
+    leftY += cardHeight + 6;
   });
 
   // Personal Project
-  if (leftY < 250) {
+  if (leftY < 240) {
     doc.setFontSize(13);
     doc.setFont('helvetica', 'bold');
     doc.setTextColor(...colors.primary);
@@ -405,26 +402,26 @@ const generateResumePDF = () => {
     doc.line(15, leftY, 47, leftY);
     leftY += 8;
 
-    addShadow(15, leftY, 115, 25, 2);
-    addRoundedRect(15, leftY, 115, 25, 2, 'F', colors.bgLight);
+    addShadow(15, leftY, 115, 22, 2);
+    addRoundedRect(15, leftY, 115, 22, 2, 'F', colors.bgLight);
 
     doc.setFontSize(10);
     doc.setFont('helvetica', 'bold');
     doc.setTextColor(...colors.primary);
-    doc.text('🚀 BizControl.tech', 18, leftY + 6);
+    doc.text('BizControl.tech', 18, leftY + 6);
 
     doc.setFontSize(8);
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(...colors.text);
     const projectDesc = 'Personal operations management project exploring better ways of managing tasks, tracking productivity, and improving operational visibility for small teams.';
     const projectLines = doc.splitTextToSize(projectDesc, 110);
-    doc.text(projectLines, 18, leftY + 12);
+    doc.text(projectLines, 18, leftY + 11);
   }
 
   // Footer
   doc.setFontSize(7);
   doc.setTextColor(...colors.textLight);
-  doc.text('Generated from portfolio website | Available for Remote Work | Open to Leadership & Operations Roles', pageWidth / 2, pageHeight - 8, { align: 'center' });
+  doc.text('Generated from professional portfolio | Available for Remote Work | Open to Leadership & Operations Roles', pageWidth / 2, pageHeight - 8, { align: 'center' });
 
   // Save PDF
   doc.save('Saurabh_Mishra_Resume.pdf');
