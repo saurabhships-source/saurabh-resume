@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Target, TrendingUp, Shield, Zap, CheckCircle } from 'lucide-react';
 
 const About = () => {
@@ -33,20 +34,58 @@ const About = () => {
     }
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, x: -30 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.5, ease: 'easeOut' }
+    }
+  };
+
+  const achievementVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: (index) => ({
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.5,
+        delay: index * 0.1,
+        ease: 'easeOut'
+      }
+    })
+  };
+
   return (
     <section id="about" className="py-20 bg-white">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* Left - Content */}
-          <div className="space-y-8">
-            <div className="space-y-4">
+          <motion.div
+            className="space-y-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={containerVariants}
+          >
+            <motion.div className="space-y-4" variants={itemVariants}>
               <h3 className="text-sm font-bold text-navy-600 uppercase tracking-wide">About Me</h3>
               <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
                 I Don't Just Manage Operations—I Transform Them
               </h2>
-            </div>
+            </motion.div>
 
-            <div className="space-y-5 text-lg text-gray-700 leading-relaxed">
+            <motion.div className="space-y-5 text-lg text-gray-700 leading-relaxed" variants={itemVariants}>
               <p className="font-semibold text-gray-900">
                 I'm not your typical operations manager. I'm the person companies call when they need someone who can 
                 walk into chaos and create order—fast.
@@ -65,45 +104,76 @@ const About = () => {
                 If you need someone who can hit the ground running, lead with confidence, and make an immediate impact—
                 let's talk.
               </p>
-            </div>
+            </motion.div>
 
             {/* Key Achievements */}
-            <div className="bg-gradient-to-br from-navy-50 to-blue-50 rounded-xl p-6 border-l-4 border-navy-600">
+            <motion.div
+              className="bg-gradient-to-br from-navy-50 to-blue-50 rounded-xl p-6 border-l-4 border-navy-600"
+              variants={itemVariants}
+            >
               <h4 className="text-lg font-bold text-gray-900 mb-4">Key Career Achievements</h4>
               <ul className="space-y-3">
                 {achievements.map((achievement, idx) => (
-                  <li key={idx} className="flex items-start space-x-3">
+                  <motion.li
+                    key={idx}
+                    className="flex items-start space-x-3"
+                    custom={idx}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={achievementVariants}
+                  >
                     <CheckCircle className="w-5 h-5 text-navy-600 mt-0.5 flex-shrink-0" />
                     <span className="text-gray-700">{achievement}</span>
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Right - Image & Strengths */}
-          <div className="space-y-8">
-            <img
+          <motion.div
+            className="space-y-8"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+          >
+            <motion.img
               src="https://images.unsplash.com/photo-1622675205169-901710ac8643"
               alt="Professional Team Leadership"
               className="rounded-2xl shadow-2xl w-full h-[400px] object-cover"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
             />
 
             <div className="grid sm:grid-cols-2 gap-6">
               {coreStrengths.map((strength, index) => {
                 const Icon = strength.icon;
                 return (
-                  <div key={index} className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
-                    <div className="w-12 h-12 rounded-lg bg-navy-600 flex items-center justify-center mb-4">
+                  <motion.div
+                    key={index}
+                    className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    whileHover={{ y: -5, scale: 1.02 }}
+                  >
+                    <motion.div
+                      className="w-12 h-12 rounded-lg bg-navy-600 flex items-center justify-center mb-4"
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.6 }}
+                    >
                       <Icon className="w-6 h-6 text-white" />
-                    </div>
+                    </motion.div>
                     <h4 className="font-bold text-gray-900 mb-2">{strength.title}</h4>
                     <p className="text-sm text-gray-600 leading-relaxed">{strength.description}</p>
-                  </div>
+                  </motion.div>
                 );
               })}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
