@@ -1,11 +1,32 @@
 import jsPDF from 'jspdf';
 
-const generateResumePDF = () => {
+const generateResumePDF = async () => {
   const doc = new jsPDF({
     orientation: 'portrait',
     unit: 'mm',
     format: 'a4'
   });
+
+  // Function to convert image URL to base64
+  const getImageBase64 = async (url) => {
+    try {
+      const response = await fetch(url);
+      const blob = await response.blob();
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(blob);
+      });
+    } catch (error) {
+      console.error('Error loading image:', error);
+      return null;
+    }
+  };
+
+  // Load professional photo
+  const photoUrl = 'https://customer-assets.emergentagent.com/job_saurabh-ops/artifacts/syafy5uc_ChatGPT%20Image%20Mar%2019%2C%202026%2C%2011_11_39%20PM.png';
+  const photoBase64 = await getImageBase64(photoUrl);
 
   // Premium Color Palette
   const colors = {
@@ -70,16 +91,33 @@ const generateResumePDF = () => {
   let rightY = 60;
 
   // Right Sidebar - Page 1
+  // Profile Photo
   addShadow(rightColX, rightY, 60, 60, 3);
-  doc.setFillColor(240, 240, 245);
-  doc.roundedRect(rightColX, rightY, 60, 60, 3, 3, 'F');
-  doc.setDrawColor(...colors.primary);
-  doc.setLineWidth(0.5);
-  doc.roundedRect(rightColX, rightY, 60, 60, 3, 3, 'S');
-  doc.setFontSize(9);
-  doc.setTextColor(...colors.textLight);
-  doc.text('Professional', rightColX + 30, rightY + 27, { align: 'center' });
-  doc.text('Photo', rightColX + 30, rightY + 33, { align: 'center' });
+  
+  if (photoBase64) {
+    // Add white background
+    doc.setFillColor(255, 255, 255);
+    doc.roundedRect(rightColX, rightY, 60, 60, 3, 3, 'F');
+    
+    // Add photo - crop to square and fit
+    doc.addImage(photoBase64, 'PNG', rightColX, rightY, 60, 60);
+    
+    // Add border
+    doc.setDrawColor(...colors.primary);
+    doc.setLineWidth(0.5);
+    doc.roundedRect(rightColX, rightY, 60, 60, 3, 3, 'S');
+  } else {
+    // Fallback placeholder
+    doc.setFillColor(240, 240, 245);
+    doc.roundedRect(rightColX, rightY, 60, 60, 3, 3, 'F');
+    doc.setDrawColor(...colors.primary);
+    doc.setLineWidth(0.5);
+    doc.roundedRect(rightColX, rightY, 60, 60, 3, 3, 'S');
+    doc.setFontSize(9);
+    doc.setTextColor(...colors.textLight);
+    doc.text('Professional', rightColX + 30, rightY + 27, { align: 'center' });
+    doc.text('Photo', rightColX + 30, rightY + 33, { align: 'center' });
+  }
   rightY += 68;
 
   // Key Metrics

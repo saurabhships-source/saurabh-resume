@@ -23,8 +23,8 @@ const Header = () => {
     }
   };
 
-  const handleDownloadResume = () => {
-    generateResumePDF();
+  const handleDownloadResume = async () => {
+    await generateResumePDF();
   };
 
   return (

@@ -13,8 +13,8 @@ const Hero = () => {
     }
   };
 
-  const handleDownloadResume = () => {
-    generateResumePDF();
+  const handleDownloadResume = async () => {
+    await generateResumePDF();
   };
 
   const stats = [
