@@ -24,12 +24,15 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Mock submission - will be implemented with backend
+    // Simulate sending - in production this would go to backend
     setTimeout(() => {
+      // Show success message
       toast({
-        title: "Message Sent!",
-        description: "Thank you for reaching out. I'll get back to you soon.",
+        title: "Message Sent Successfully!",
+        description: `Thank you ${formData.name}! I'll review your message and get back to you at ${formData.email} soon.`,
       });
+      
+      // Clear form
       setFormData({ name: '', email: '', subject: '', message: '' });
       setIsSubmitting(false);
     }, 1500);

@@ -23,8 +23,70 @@ const Header = () => {
   };
 
   const handleDownloadResume = () => {
-    // Mock PDF download
-    alert('Resume download functionality will be implemented with backend');
+    // Create a simple text version of resume for download
+    const resumeContent = `
+SAURABH MISHRA
+Operations Manager | Customer Retention Specialist | Team Leader
+
+Contact Information:
+Email: saurabhmishra33555@gmail.com
+Phone: +91 9867179669 / +91 9155361659
+Location: Dombivli, India
+LinkedIn: https://www.linkedin.com/in/saurabh-mishra-004a98383/
+Portfolio: https://bizcontrol.tech
+
+PROFESSIONAL SUMMARY
+I work on improving operations, managing teams, and handling customer retention challenges in fast-paced environments. I have 6+ years of experience across TCS (Citi Bank), Concentrix (JP Morgan Chase), and Accenture, where I've supported process improvements, team coordination, and customer satisfaction initiatives.
+
+EXPERIENCE
+
+TCS (Citi Bank) - Account Retention Manager
+Jul 2024 - Jan 2026 | Remote
+- Work on customer retention strategies by identifying at-risk accounts
+- Handle customer lifecycle management activities
+- Coordinate with cross-functional teams to address customer concerns
+- Contributed to reducing account cancellations through proactive outreach
+
+Concentrix (JP Morgan Chase) - Retention Manager
+Mar 2024 - Jul 2024 | Remote
+- Managed high-priority customer escalations with 94% satisfaction rate
+- Worked on resolving complex account issues
+- Supported retention efforts by analyzing escalation patterns
+
+Accenture (Verizon & Facebook) - Client Support Associate & Trainer
+Mar 2019 - Feb 2024 | Mumbai
+- Provided multi-channel customer support
+- Trained new team members
+- Maintained quality scores above 95%
+
+Vidyalankar - Branch Head
+Dec 2018 - Mar 2019 | Mumbai
+- Managed daily branch operations
+
+Karvy Digikonnect - Team Leader
+Aug 2018 - Nov 2018 | Mumbai
+- Led team of 30 associates
+
+EDUCATION
+Bachelor of Science (BSc) - 2015
+Higher Secondary Certificate (HSC) - 2009
+
+CERTIFICATIONS
+- Business Strategy Masterclass
+- Leadership & Management Diploma
+- Stakeholder Management
+`;
+
+    // Create blob and download
+    const blob = new Blob([resumeContent], { type: 'text/plain' });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'Saurabh_Mishra_Resume.txt';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
   };
 
   return (

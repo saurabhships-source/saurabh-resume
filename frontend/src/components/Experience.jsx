@@ -7,7 +7,7 @@ const Experience = () => {
     {
       company: 'TCS (Citi Bank)',
       role: 'Account Retention Manager',
-      period: 'Jan 2024 - Present',
+      period: 'Jul 2024 - Jan 2026',
       location: 'Remote',
       responsibilities: [
         'Work on customer retention strategies by identifying at-risk accounts and implementing targeted follow-up processes',
@@ -19,7 +19,7 @@ const Experience = () => {
     {
       company: 'Concentrix (JP Morgan Chase)',
       role: 'Retention Manager',
-      period: 'Mar 2024 - Dec 2024',
+      period: 'Mar 2024 - Jul 2024',
       location: 'Remote',
       responsibilities: [
         'Managed high-priority customer escalations for premium banking clients, maintaining a 94% satisfaction rate',
@@ -31,7 +31,7 @@ const Experience = () => {
     {
       company: 'Accenture (Verizon & Facebook)',
       role: 'Client Support Associate & Trainer',
-      period: 'Jun 2019 - Feb 2024',
+      period: 'Mar 2019 - Feb 2024',
       location: 'Mumbai',
       responsibilities: [
         'Provided multi-channel customer support (voice, chat, email) for Verizon and Facebook client accounts',
@@ -44,7 +44,7 @@ const Experience = () => {
     {
       company: 'Vidyalankar',
       role: 'Branch Head',
-      period: 'Apr 2018 - May 2019',
+      period: 'Dec 2018 - Mar 2019',
       location: 'Mumbai',
       responsibilities: [
         'Managed daily branch operations including sales coordination, administration, and team supervision',
@@ -56,7 +56,7 @@ const Experience = () => {
     {
       company: 'Karvy Digikonnect (Bharti AXA)',
       role: 'Team Leader',
-      period: 'Jan 2017 - Mar 2018',
+      period: 'Aug 2018 - Nov 2018',
       location: 'Mumbai',
       responsibilities: [
         'Led a team of 30 associates, managing daily operations, performance tracking, and quality monitoring',
