@@ -139,13 +139,17 @@ const About = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
           >
-            <motion.img
-              src="https://images.unsplash.com/photo-1622675205169-901710ac8643"
-              alt="Professional Team Collaboration"
-              className="rounded-2xl shadow-2xl w-full h-[400px] object-cover"
+            <motion.div
+              className="rounded-2xl shadow-2xl overflow-hidden w-full"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
-            />
+            >
+              <img
+                src="https://customer-assets.emergentagent.com/job_saurabh-ops/artifacts/d2zk4mih_ChatGPT%20Image%20Mar%2020%2C%202026%2C%2012_48_16%20PM.png"
+                alt="Saurabh Mishra - Professional at Work"
+                className="w-full h-[450px] object-cover object-center"
+              />
+            </motion.div>
 
             <div className="grid sm:grid-cols-2 gap-6">
               {coreStrengths.map((strength, index) => {
