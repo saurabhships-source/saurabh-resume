@@ -60,6 +60,12 @@ const Header = () => {
               Experience
             </button>
             <button
+              onClick={() => scrollToSection('education')}
+              className="text-gray-700 hover:text-navy-600 transition-colors font-medium"
+            >
+              Education
+            </button>
+            <button
               onClick={() => scrollToSection('certifications')}
               className="text-gray-700 hover:text-navy-600 transition-colors font-medium"
             >
@@ -109,6 +115,12 @@ const Header = () => {
               className="block w-full text-left text-gray-700 hover:text-navy-600 transition-colors font-medium py-2"
             >
               Experience
+            </button>
+            <button
+              onClick={() => scrollToSection('education')}
+              className="block w-full text-left text-gray-700 hover:text-navy-600 transition-colors font-medium py-2"
+            >
+              Education
             </button>
             <button
               onClick={() => scrollToSection('certifications')}
