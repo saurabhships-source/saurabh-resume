@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Target, TrendingUp, Shield, Zap, CheckCircle } from 'lucide-react';
+import { Target, TrendingUp, Shield, Zap, CircleCheck as CheckCircle } from 'lucide-react';
 
 const About = () => {
   const achievements = [
@@ -147,7 +147,7 @@ const About = () => {
               <img
                 src="https://customer-assets.emergentagent.com/job_saurabh-ops/artifacts/d2zk4mih_ChatGPT%20Image%20Mar%2020%2C%202026%2C%2012_48_16%20PM.png"
                 alt="Saurabh Mishra - Professional at Work"
-                className="w-full h-[450px] object-cover object-center"
+                className="w-full h-[450px] object-cover object-top"
               />
             </motion.div>
 
