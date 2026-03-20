@@ -11,7 +11,6 @@ const generateResumePDF = () => {
   const colors = {
     primary: [30, 58, 138],
     primaryLight: [59, 130, 246],
-    accent: [37, 99, 235],
     dark: [17, 24, 39],
     text: [55, 65, 81],
     textLight: [107, 114, 128],
@@ -22,20 +21,14 @@ const generateResumePDF = () => {
 
   const pageWidth = 210;
   const pageHeight = 297;
+  const margin = 15;
   const leftColWidth = 125;
-  const rightColWidth = 70;
   const rightColX = 135;
-  let leftY = 0;
-  let rightY = 0;
 
   // Helper Functions
   const addRoundedRect = (x, y, w, h, r, style = 'F', color = colors.bgCard) => {
     if (style === 'F' || style === 'FD') {
       doc.setFillColor(...color);
-    }
-    if (style === 'S' || style === 'FD') {
-      doc.setDrawColor(230, 230, 230);
-      doc.setLineWidth(0.3);
     }
     doc.roundedRect(x, y, w, h, r, r, style);
   };
@@ -47,50 +40,42 @@ const generateResumePDF = () => {
     doc.setGState(doc.GState({ opacity: 1 }));
   };
 
-  // ===== PAGE 1 - HEADER =====
+  // ========== PAGE 1 ==========
+  
+  // Header
   doc.setFillColor(...colors.primary);
-  doc.rect(0, 0, pageWidth, 52, 'F');
+  doc.rect(0, 0, pageWidth, 50, 'F');
 
-  // Name
-  doc.setFontSize(32);
+  doc.setFontSize(30);
   doc.setFont('helvetica', 'bold');
   doc.setTextColor(...colors.white);
-  doc.text('SAURABH MISHRA', 15, 22);
+  doc.text('SAURABH MISHRA', margin, 20);
 
-  // Role
   doc.setFontSize(11);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(219, 234, 254);
-  doc.text('Operations Manager | Customer Retention Specialist | Team Leader', 15, 30);
+  doc.text('Operations Manager | Customer Retention Specialist | Team Leader', margin, 28);
 
-  // Line separator
   doc.setDrawColor(255, 255, 255);
   doc.setGState(doc.GState({ opacity: 0.3 }));
-  doc.setLineWidth(0.3);
-  doc.line(15, 34, 195, 34);
+  doc.line(margin, 32, 195, 32);
   doc.setGState(doc.GState({ opacity: 1 }));
 
-  // Contact Info - Only Email and Phone
   doc.setFontSize(9);
-  doc.setFont('helvetica', 'normal');
   doc.setTextColor(...colors.white);
-  
-  doc.text('Email: saurabhmishra33555@gmail.com', 15, 40);
-  doc.text('Phone: +91 9867179669 / 9155361659', 15, 46);
+  doc.text('Email: saurabhmishra33555@gmail.com', margin, 38);
+  doc.text('Phone: +91 9867179669 / 9155361659', margin, 44);
 
-  leftY = 62;
-  rightY = 62;
+  let leftY = 60;
+  let rightY = 60;
 
-  // ===== RIGHT SIDEBAR - PAGE 1 =====
-  
-  // Profile Image
+  // Right Sidebar - Page 1
   addShadow(rightColX, rightY, 60, 60, 3);
   doc.setFillColor(240, 240, 245);
   doc.roundedRect(rightColX, rightY, 60, 60, 3, 3, 'F');
   doc.setDrawColor(...colors.primary);
   doc.setLineWidth(0.5);
   doc.roundedRect(rightColX, rightY, 60, 60, 3, 3, 'S');
-  
   doc.setFontSize(9);
   doc.setTextColor(...colors.textLight);
   doc.text('Professional', rightColX + 30, rightY + 27, { align: 'center' });
@@ -102,122 +87,105 @@ const generateResumePDF = () => {
   doc.setFont('helvetica', 'bold');
   doc.setTextColor(...colors.dark);
   doc.text('KEY METRICS', rightColX, rightY);
-  rightY += 8;
+  rightY += 7;
 
   const metrics = [
-    { value: '6+', label: 'Years Experience' },
-    { value: '30+', label: 'Team Members' },
-    { value: '35%', label: 'Process Improvements' },
-    { value: '94%', label: 'Client Satisfaction' }
+    { value: '6+', label: 'Years' },
+    { value: '30+', label: 'Team' },
+    { value: '35%', label: 'Improved' },
+    { value: '94%', label: 'CSAT' }
   ];
 
   metrics.forEach((metric) => {
-    addShadow(rightColX, rightY, 60, 18, 2);
-    addRoundedRect(rightColX, rightY, 60, 18, 2, 'F', colors.white);
-    
-    doc.setFontSize(16);
+    addShadow(rightColX, rightY, 60, 16, 2);
+    addRoundedRect(rightColX, rightY, 60, 16, 2, 'F', colors.white);
+    doc.setFontSize(15);
     doc.setFont('helvetica', 'bold');
     doc.setTextColor(...colors.primary);
-    doc.text(metric.value, rightColX + 30, rightY + 8, { align: 'center' });
-    
+    doc.text(metric.value, rightColX + 30, rightY + 7, { align: 'center' });
     doc.setFontSize(7);
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(...colors.textLight);
-    doc.text(metric.label, rightColX + 30, rightY + 13.5, { align: 'center' });
-    
-    rightY += 21;
+    doc.text(metric.label, rightColX + 30, rightY + 12, { align: 'center' });
+    rightY += 19;
   });
 
-  rightY += 6;
+  rightY += 4;
 
   // Education
   doc.setFontSize(11);
   doc.setFont('helvetica', 'bold');
   doc.setTextColor(...colors.dark);
   doc.text('EDUCATION', rightColX, rightY);
-  rightY += 8;
-
-  addRoundedRect(rightColX, rightY, 60, 28, 2, 'F', colors.white);
-  addShadow(rightColX, rightY, 60, 28, 2);
-  
+  rightY += 7;
+  addRoundedRect(rightColX, rightY, 60, 24, 2, 'F', colors.white);
+  addShadow(rightColX, rightY, 60, 24, 2);
   doc.setFontSize(9);
   doc.setFont('helvetica', 'bold');
   doc.setTextColor(...colors.text);
-  doc.text('Bachelor of Science', rightColX + 3, rightY + 7);
+  doc.text('Bachelor of Science', rightColX + 3, rightY + 6);
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(7.5);
   doc.setTextColor(...colors.textLight);
-  doc.text('(BSc) - 2015', rightColX + 3, rightY + 12);
-  
+  doc.text('2015', rightColX + 3, rightY + 11);
   doc.setFontSize(9);
   doc.setFont('helvetica', 'bold');
   doc.setTextColor(...colors.text);
-  doc.text('Higher Secondary', rightColX + 3, rightY + 19);
+  doc.text('Higher Secondary', rightColX + 3, rightY + 17);
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(7.5);
   doc.setTextColor(...colors.textLight);
-  doc.text('(HSC) - 2009', rightColX + 3, rightY + 24);
-
-  rightY += 34;
+  doc.text('2009', rightColX + 3, rightY + 21);
+  rightY += 28;
 
   // Certifications
   doc.setFontSize(11);
   doc.setFont('helvetica', 'bold');
   doc.setTextColor(...colors.dark);
   doc.text('CERTIFICATIONS', rightColX, rightY);
-  rightY += 7;
-
-  addRoundedRect(rightColX, rightY, 60, 22, 2, 'F', colors.white);
-  addShadow(rightColX, rightY, 60, 22, 2);
-
-  const certs = [
-    'Business Strategy',
-    'Leadership & Management',
-    'Stakeholder Management'
-  ];
-
+  rightY += 6;
+  addRoundedRect(rightColX, rightY, 60, 20, 2, 'F', colors.white);
+  addShadow(rightColX, rightY, 60, 20, 2);
   doc.setFontSize(7.5);
   doc.setFont('helvetica', 'normal');
+  const certs = ['Business Strategy', 'Leadership & Mgmt', 'Stakeholder Mgmt'];
   let certY = rightY + 5;
   certs.forEach((cert) => {
     doc.setFillColor(...colors.primary);
-    doc.circle(rightColX + 3, certY, 0.8, 'F');
+    doc.circle(rightColX + 3, certY, 0.7, 'F');
     doc.setTextColor(...colors.text);
     doc.text(cert, rightColX + 6, certY + 1);
-    certY += 6;
+    certY += 5.5;
   });
 
-  // ===== LEFT COLUMN - PAGE 1 =====
-
-  // Professional Summary
+  // Left Column - Page 1
   doc.setFontSize(13);
   doc.setFont('helvetica', 'bold');
   doc.setTextColor(...colors.primary);
-  doc.text('PROFESSIONAL SUMMARY', 15, leftY);
+  doc.text('PROFESSIONAL SUMMARY', margin, leftY);
   leftY += 2;
   doc.setDrawColor(...colors.primary);
   doc.setLineWidth(1);
-  doc.line(15, leftY, 40, leftY);
+  doc.line(margin, leftY, 40, leftY);
   leftY += 8;
 
-  addRoundedRect(15, leftY - 2, 115, 24, 2, 'F', colors.bgLight);
+  addRoundedRect(margin, leftY - 2, 115, 22, 2, 'F', colors.bgLight);
   doc.setFontSize(9);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(...colors.text);
   const summary = 'I work on improving operations, managing teams, and handling customer retention challenges in fast-paced environments. I have 6+ years of experience across TCS (Citi Bank), Concentrix (JP Morgan Chase), and Accenture, where I have supported process improvements, team coordination, and customer satisfaction initiatives.';
   const summaryLines = doc.splitTextToSize(summary, 110);
-  doc.text(summaryLines, 17, leftY + 3);
-  leftY += 28;
+  doc.text(summaryLines, margin + 2, leftY + 3);
+  leftY += 26;
 
   // Professional Experience
   doc.setFontSize(13);
   doc.setFont('helvetica', 'bold');
   doc.setTextColor(...colors.primary);
-  doc.text('PROFESSIONAL EXPERIENCE', 15, leftY);
+  doc.text('PROFESSIONAL EXPERIENCE', margin, leftY);
   leftY += 2;
-  doc.setDrawColor(...colors.primary);
   doc.setLineWidth(1);
-  doc.line(15, leftY, 60, leftY);
+  doc.line(margin, leftY, 60, leftY);
   leftY += 8;
 
   const experiences = [
@@ -228,8 +196,7 @@ const generateResumePDF = () => {
       location: 'Remote',
       points: [
         'Work on customer retention strategies by identifying at-risk accounts',
-        'Handle customer lifecycle management and relationship building',
-        'Coordinate with cross-functional teams to improve service delivery'
+        'Handle customer lifecycle management and relationship building'
       ]
     },
     {
@@ -239,8 +206,7 @@ const generateResumePDF = () => {
       location: 'Remote',
       points: [
         'Managed high-priority escalations with 94% satisfaction rate',
-        'Worked on resolving complex account issues with timely solutions',
-        'Supported retention efforts through process improvements'
+        'Worked on resolving complex account issues with timely solutions'
       ]
     },
     {
@@ -250,241 +216,241 @@ const generateResumePDF = () => {
       location: 'Mumbai',
       points: [
         'Provided multi-channel customer support for client accounts',
-        'Trained new team members, reducing onboarding time',
-        'Maintained quality scores above 95% consistently'
+        'Trained new team members, reducing onboarding time'
       ]
-    },
+    }
+  ];
+
+  experiences.forEach((exp) => {
+    const cardHeight = 28;
+    addShadow(margin, leftY, 115, cardHeight, 2);
+    addRoundedRect(margin, leftY, 115, cardHeight, 2, 'F', colors.white);
+
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(...colors.dark);
+    doc.text(exp.role, margin + 3, leftY + 5);
+
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(...colors.primary);
+    doc.text(exp.company, margin + 3, leftY + 10);
+
+    doc.setFontSize(7.5);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...colors.textLight);
+    doc.text(`${exp.period} | ${exp.location}`, margin + 3, leftY + 14);
+
+    doc.setDrawColor(...colors.bgCard);
+    doc.setLineWidth(0.3);
+    doc.line(margin + 3, leftY + 16, margin + 112, leftY + 16);
+
+    let pointY = leftY + 20;
+    exp.points.forEach((point) => {
+      doc.setFillColor(...colors.primary);
+      doc.circle(margin + 4, pointY - 1, 0.7, 'F');
+      doc.setFontSize(7.5);
+      doc.setTextColor(...colors.text);
+      const lines = doc.splitTextToSize(point, 105);
+      doc.text(lines, margin + 7, pointY);
+      pointY += lines.length * 3.5;
+    });
+
+    leftY += cardHeight + 5;
+  });
+
+  // ========== PAGE 2 ==========
+  doc.addPage();
+  leftY = 20;
+
+  // Continue Experience on Page 2
+  doc.setFontSize(13);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(...colors.primary);
+  doc.text('PROFESSIONAL EXPERIENCE (Continued)', margin, leftY);
+  leftY += 2;
+  doc.setLineWidth(1);
+  doc.line(margin, leftY, 75, leftY);
+  leftY += 8;
+
+  const moreExperiences = [
     {
       company: 'Vidyalankar',
       role: 'Branch Head',
       period: 'Dec 2018 - Mar 2019',
       location: 'Mumbai',
-      points: [
-        'Managed daily branch operations and team supervision',
-        'Oversaw operational activities and staff management'
-      ]
+      points: ['Managed branch operations and team supervision']
     },
     {
       company: 'Karvy Digikonnect (Bharti AXA)',
       role: 'Team Leader',
       period: 'Aug 2018 - Nov 2018',
       location: 'Mumbai',
-      points: [
-        'Led team of 30 associates with performance tracking',
-        'Conducted coaching sessions and performance reviews'
-      ]
+      points: ['Led team of 30 associates with performance tracking']
     }
   ];
 
-  experiences.forEach((exp) => {
-    // Calculate card height
-    const pointsHeight = exp.points.reduce((total, point) => {
-      const lines = doc.splitTextToSize(point, 105);
-      return total + (lines.length * 3.5) + 1;
-    }, 0);
-    const cardHeight = 22 + pointsHeight;
+  moreExperiences.forEach((exp) => {
+    const cardHeight = 22;
+    addShadow(margin, leftY, 180, cardHeight, 2);
+    addRoundedRect(margin, leftY, 180, cardHeight, 2, 'F', colors.white);
 
-    // Check page break
-    if (leftY + cardHeight > 285) {
-      doc.addPage();
-      leftY = 20;
-    }
-
-    // Experience Card
-    addShadow(15, leftY, 115, cardHeight, 2);
-    addRoundedRect(15, leftY, 115, cardHeight, 2, 'F', colors.white);
-
-    doc.setFontSize(11);
+    doc.setFontSize(10);
     doc.setFont('helvetica', 'bold');
     doc.setTextColor(...colors.dark);
-    doc.text(exp.role, 18, leftY + 6);
+    doc.text(exp.role, margin + 3, leftY + 5);
 
     doc.setFontSize(9);
     doc.setFont('helvetica', 'bold');
     doc.setTextColor(...colors.primary);
-    doc.text(exp.company, 18, leftY + 11);
+    doc.text(exp.company, margin + 3, leftY + 10);
 
-    doc.setFontSize(8);
+    doc.setFontSize(7.5);
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(...colors.textLight);
-    doc.text(`${exp.period} | ${exp.location}`, 18, leftY + 16);
+    doc.text(`${exp.period} | ${exp.location}`, margin + 3, leftY + 14);
 
     doc.setDrawColor(...colors.bgCard);
     doc.setLineWidth(0.3);
-    doc.line(18, leftY + 18, 127, leftY + 18);
+    doc.line(margin + 3, leftY + 16, margin + 177, leftY + 16);
 
-    let pointY = leftY + 23;
-    exp.points.forEach((point) => {
-      doc.setFillColor(...colors.primary);
-      doc.circle(19, pointY - 1, 0.8, 'F');
-      doc.setFontSize(8);
-      doc.setTextColor(...colors.text);
-      const lines = doc.splitTextToSize(point, 105);
-      doc.text(lines, 21, pointY);
-      pointY += lines.length * 3.5 + 1;
-    });
+    doc.setFillColor(...colors.primary);
+    doc.circle(margin + 4, leftY + 19, 0.7, 'F');
+    doc.setFontSize(7.5);
+    doc.setTextColor(...colors.text);
+    doc.text(exp.points[0], margin + 7, leftY + 20);
 
-    leftY += cardHeight + 6;
+    leftY += cardHeight + 5;
   });
 
-  // ===== PAGE 2 =====
-  doc.addPage();
-  
-  let page2Y = 20;
+  leftY += 3;
 
-  // Core Skills - Full Width on Page 2
-  doc.setFontSize(14);
+  // Core Skills
+  doc.setFontSize(13);
   doc.setFont('helvetica', 'bold');
   doc.setTextColor(...colors.primary);
-  doc.text('CORE SKILLS & COMPETENCIES', 15, page2Y);
-  page2Y += 2;
-  doc.setDrawColor(...colors.primary);
-  doc.setLineWidth(1.2);
-  doc.line(15, page2Y, 65, page2Y);
-  page2Y += 10;
+  doc.text('CORE SKILLS & COMPETENCIES', margin, leftY);
+  leftY += 2;
+  doc.setLineWidth(1);
+  doc.line(margin, leftY, 60, leftY);
+  leftY += 8;
 
   const skillCategories = [
-    {
-      title: 'Operations & Management',
-      skills: ['Operations Management', 'Process Optimization', 'Workflow Coordination', 'Resource Planning']
-    },
-    {
-      title: 'Customer Success',
-      skills: ['Customer Retention', 'Account Management', 'Client Engagement', 'Satisfaction Improvement']
-    },
-    {
-      title: 'Leadership & Training',
-      skills: ['Team Leadership', 'Performance Coaching', 'Training & Development', 'Talent Management']
-    },
-    {
-      title: 'Communication & Support',
-      skills: ['Communication Excellence', 'Virtual Assistance', 'Stakeholder Management', 'Cross-functional Collaboration']
-    },
-    {
-      title: 'Analysis & Reporting',
-      skills: ['Analytics & Reporting', 'KPI Tracking', 'Performance Metrics', 'Data-Driven Decisions']
-    },
-    {
-      title: 'Problem Solving',
-      skills: ['Problem Resolution', 'Critical Thinking', 'Escalation Handling', 'Decision Making']
-    }
+    { title: 'Operations & Management', skills: ['Operations Management', 'Process Optimization', 'Workflow Coordination'] },
+    { title: 'Customer Success', skills: ['Customer Retention', 'Account Management', 'Client Engagement'] },
+    { title: 'Leadership & Training', skills: ['Team Leadership', 'Performance Coaching', 'Training & Development'] },
+    { title: 'Communication', skills: ['Communication Excellence', 'Virtual Assistance', 'Stakeholder Management'] }
   ];
 
-  const colWidth = 90;
-  let col1Y = page2Y;
-  let col2Y = page2Y;
+  const col1X = margin;
+  const col2X = 107;
+  const colWidth = 88;
+  let col1Y = leftY;
+  let col2Y = leftY;
 
   skillCategories.forEach((category, idx) => {
-    const isLeftCol = idx % 2 === 0;
-    const xPos = isLeftCol ? 15 : 110;
-    let yPos = isLeftCol ? col1Y : col2Y;
+    const isLeft = idx % 2 === 0;
+    const xPos = isLeft ? col1X : col2X;
+    let yPos = isLeft ? col1Y : col2Y;
 
-    // Category card
-    addShadow(xPos, yPos, colWidth, 32, 2);
-    addRoundedRect(xPos, yPos, colWidth, 32, 2, 'F', colors.white);
+    addShadow(xPos, yPos, colWidth, 22, 2);
+    addRoundedRect(xPos, yPos, colWidth, 22, 2, 'F', colors.white);
 
-    doc.setFontSize(10);
+    doc.setFontSize(9);
     doc.setFont('helvetica', 'bold');
     doc.setTextColor(...colors.primary);
-    doc.text(category.title, xPos + 3, yPos + 6);
+    doc.text(category.title, xPos + 3, yPos + 5);
 
     doc.setDrawColor(...colors.bgCard);
     doc.setLineWidth(0.3);
-    doc.line(xPos + 3, yPos + 8, xPos + colWidth - 3, yPos + 8);
+    doc.line(xPos + 3, yPos + 7, xPos + colWidth - 3, yPos + 7);
 
-    let skillY = yPos + 13;
+    let skillY = yPos + 11;
     category.skills.forEach((skill) => {
       doc.setFillColor(...colors.primary);
-      doc.circle(xPos + 4, skillY, 0.7, 'F');
-      doc.setFontSize(7.5);
+      doc.circle(xPos + 4, skillY, 0.6, 'F');
+      doc.setFontSize(7);
       doc.setFont('helvetica', 'normal');
       doc.setTextColor(...colors.text);
       doc.text(skill, xPos + 7, skillY + 1);
-      skillY += 4.5;
+      skillY += 4;
     });
 
-    if (isLeftCol) {
-      col1Y = yPos + 38;
-    } else {
-      col2Y = yPos + 38;
-    }
+    if (isLeft) col1Y = yPos + 27;
+    else col2Y = yPos + 27;
   });
 
-  page2Y = Math.max(col1Y, col2Y) + 5;
+  leftY = Math.max(col1Y, col2Y) + 3;
 
   // Personal Project
-  doc.setFontSize(14);
+  doc.setFontSize(13);
   doc.setFont('helvetica', 'bold');
   doc.setTextColor(...colors.primary);
-  doc.text('PERSONAL PROJECT', 15, page2Y);
-  page2Y += 2;
-  doc.setDrawColor(...colors.primary);
-  doc.setLineWidth(1.2);
-  doc.line(15, page2Y, 50, page2Y);
-  page2Y += 10;
+  doc.text('PERSONAL PROJECT', margin, leftY);
+  leftY += 2;
+  doc.setLineWidth(1);
+  doc.line(margin, leftY, 47, leftY);
+  leftY += 8;
 
-  addShadow(15, page2Y, 180, 28, 2);
-  addRoundedRect(15, page2Y, 180, 28, 2, 'F', colors.bgLight);
+  addShadow(margin, leftY, 180, 24, 2);
+  addRoundedRect(margin, leftY, 180, 24, 2, 'F', colors.bgLight);
 
-  doc.setFontSize(11);
+  doc.setFontSize(10);
   doc.setFont('helvetica', 'bold');
   doc.setTextColor(...colors.primary);
-  doc.text('BizControl.tech', 18, page2Y + 7);
+  doc.text('BizControl.tech', margin + 3, leftY + 6);
 
-  doc.setFontSize(8);
+  doc.setFontSize(7.5);
   doc.setFont('helvetica', 'italic');
   doc.setTextColor(...colors.textLight);
-  doc.text('Personal Operations Management Platform', 18, page2Y + 12);
+  doc.text('Personal Operations Management Platform', margin + 3, leftY + 11);
+
+  doc.setFontSize(8);
+  doc.setFont('helvetica', 'normal');
+  doc.setTextColor(...colors.text);
+  const projectDesc = 'A self-initiated project exploring better ways of managing tasks, tracking productivity, and improving operational visibility for small teams.';
+  const projectLines = doc.splitTextToSize(projectDesc, 174);
+  doc.text(projectLines, margin + 3, leftY + 16);
+
+  leftY += 29;
+
+  // Additional Contact
+  doc.setFontSize(13);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(...colors.primary);
+  doc.text('ADDITIONAL CONTACT', margin, leftY);
+  leftY += 2;
+  doc.setLineWidth(1);
+  doc.line(margin, leftY, 52, leftY);
+  leftY += 8;
+
+  addShadow(margin, leftY, 180, 16, 2);
+  addRoundedRect(margin, leftY, 180, 16, 2, 'F', colors.white);
 
   doc.setFontSize(8.5);
-  doc.setFont('helvetica', 'normal');
+  doc.setFont('helvetica', 'bold');
   doc.setTextColor(...colors.text);
-  const projectDesc = 'A self-initiated project exploring better ways of managing tasks, tracking productivity, and improving operational visibility for small teams. This platform demonstrates my understanding of operations challenges and my ability to develop practical solutions.';
-  const projectLines = doc.splitTextToSize(projectDesc, 175);
-  doc.text(projectLines, 18, page2Y + 17);
-
-  page2Y += 35;
-
-  // Additional Contact Information
-  doc.setFontSize(14);
-  doc.setFont('helvetica', 'bold');
-  doc.setTextColor(...colors.primary);
-  doc.text('ADDITIONAL CONTACT', 15, page2Y);
-  page2Y += 2;
-  doc.setDrawColor(...colors.primary);
-  doc.setLineWidth(1.2);
-  doc.line(15, page2Y, 52, page2Y);
-  page2Y += 10;
-
-  addShadow(15, page2Y, 180, 20, 2);
-  addRoundedRect(15, page2Y, 180, 20, 2, 'F', colors.white);
-
-  doc.setFontSize(9);
+  doc.text('Location:', margin + 3, leftY + 6);
   doc.setFont('helvetica', 'normal');
-  doc.setTextColor(...colors.text);
-  
+  doc.text('Dombivli, India (Open to Remote Work)', margin + 21, leftY + 6);
+
   doc.setFont('helvetica', 'bold');
-  doc.text('Location:', 18, page2Y + 7);
-  doc.setFont('helvetica', 'normal');
-  doc.text('Dombivli, India (Open to Remote Work)', 35, page2Y + 7);
-  
-  doc.setFont('helvetica', 'bold');
-  doc.text('LinkedIn:', 18, page2Y + 13);
+  doc.text('LinkedIn:', margin + 3, leftY + 11);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(...colors.primary);
-  doc.text('linkedin.com/in/saurabh-mishra-004a98383', 35, page2Y + 13);
-  
+  doc.text('linkedin.com/in/saurabh-mishra-004a98383', margin + 21, leftY + 11);
+
   doc.setTextColor(...colors.text);
   doc.setFont('helvetica', 'bold');
-  doc.text('Portfolio:', 115, page2Y + 13);
+  doc.text('Portfolio:', 115, leftY + 11);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(...colors.primary);
-  doc.text('bizcontrol.tech', 131, page2Y + 13);
+  doc.text('bizcontrol.tech', 131, leftY + 11);
 
   // Footer
   doc.setFontSize(7);
   doc.setTextColor(...colors.textLight);
-  doc.text('Professional Portfolio | Available for Remote Work | Open to Leadership & Operations Roles', pageWidth / 2, pageHeight - 8, { align: 'center' });
+  doc.text('Professional Portfolio | Available for Remote Work | Leadership & Operations Roles', pageWidth / 2, pageHeight - 8, { align: 'center' });
 
   // Save PDF
   doc.save('Saurabh_Mishra_Resume.pdf');
