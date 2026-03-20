@@ -351,9 +351,12 @@ const generateResumePDF = () => {
       }
     }
 
-    // Experience Card
-    addShadow(15, leftY, 115, 'auto', 2);
-    addRoundedRect(15, leftY, 115, 40, 2, 'F', colors.white);
+    // Calculate card height based on content
+    const cardHeight = 10 + (exp.points.length * 10);
+
+    // Experience Card with shadow
+    addShadow(15, leftY, 115, cardHeight, 2);
+    addRoundedRect(15, leftY, 115, cardHeight, 2, 'F', colors.white);
 
     // Company & Role
     doc.setFontSize(11);
@@ -387,7 +390,7 @@ const generateResumePDF = () => {
       pointY += lines.length * 3.5;
     });
 
-    leftY += 45;
+    leftY += cardHeight + 5;
   });
 
   // Personal Project
