@@ -63,49 +63,103 @@ const generateResumePDF = async () => {
 
   // ========== PAGE 1 ==========
   
-  // Header
-  doc.setFillColor(...colors.primary);
-  doc.rect(0, 0, pageWidth, 50, 'F');
+  // Premium Header with gradient effect
+  // Dark navy gradient background
+  doc.setFillColor(30, 58, 138); // Primary navy
+  doc.rect(0, 0, pageWidth, 52, 'F');
+  
+  // Add subtle overlay for depth
+  doc.setFillColor(37, 99, 235); // Lighter blue
+  doc.setGState(doc.GState({ opacity: 0.1 }));
+  doc.rect(0, 0, pageWidth, 52, 'F');
+  doc.setGState(doc.GState({ opacity: 1 }));
+  
+  // Decorative accent line at bottom
+  doc.setFillColor(59, 130, 246); // Blue 500
+  doc.rect(0, 51, pageWidth, 1, 'F');
 
-  doc.setFontSize(30);
+  // Name - Large, bold, with letter spacing effect
+  doc.setFontSize(32);
   doc.setFont('helvetica', 'bold');
-  doc.setTextColor(...colors.white);
+  doc.setTextColor(255, 255, 255);
   doc.text('SAURABH MISHRA', margin, 20);
 
+  // Professional tagline - elegant subtitle
   doc.setFontSize(11);
   doc.setFont('helvetica', 'normal');
-  doc.setTextColor(219, 234, 254);
+  doc.setTextColor(219, 234, 254); // Light blue
   doc.text('Operations Manager | Customer Retention Specialist | Team Leader', margin, 28);
 
+  // Elegant separator line with gradient effect
   doc.setDrawColor(255, 255, 255);
-  doc.setGState(doc.GState({ opacity: 0.3 }));
+  doc.setGState(doc.GState({ opacity: 0.4 }));
+  doc.setLineWidth(0.4);
   doc.line(margin, 32, 195, 32);
   doc.setGState(doc.GState({ opacity: 1 }));
 
+  // Contact info with icons-style layout
   doc.setFontSize(9);
-  doc.setTextColor(...colors.white);
-  doc.text('Email: saurabhmishra33555@gmail.com', margin, 38);
-  doc.text('Phone: +91 9867179669 / 9155361659', margin, 44);
+  doc.setFont('helvetica', 'normal');
+  doc.setTextColor(255, 255, 255);
+  
+  // Email with elegant spacing
+  doc.text('Email:', margin, 39);
+  doc.setFont('helvetica', 'normal');
+  doc.text('saurabhmishra33555@gmail.com', margin + 13, 39);
+  
+  // Phone with elegant spacing
+  doc.text('Phone:', margin, 45);
+  doc.text('+91 9867179669 / 9155361659', margin + 13, 45);
 
   let leftY = 60;
   let rightY = 60;
 
   // Right Sidebar - Page 1
-  // Profile Photo
-  addShadow(rightColX, rightY, 60, 60, 3);
-  
+  // Profile Photo - Clip to rounded square
   if (photoBase64) {
-    // Add white background
-    doc.setFillColor(255, 255, 255);
-    doc.roundedRect(rightColX, rightY, 60, 60, 3, 3, 'F');
-    
-    // Add photo - crop to square and fit
-    doc.addImage(photoBase64, 'PNG', rightColX, rightY, 60, 60);
-    
-    // Add border
-    doc.setDrawColor(...colors.primary);
-    doc.setLineWidth(0.5);
-    doc.roundedRect(rightColX, rightY, 60, 60, 3, 3, 'S');
+    try {
+      // Add shadow
+      doc.setFillColor(200, 200, 200);
+      doc.setGState(doc.GState({ opacity: 0.2 }));
+      doc.roundedRect(rightColX + 1, rightY + 1, 60, 60, 3, 3, 'F');
+      doc.setGState(doc.GState({ opacity: 1 }));
+      
+      // Add white background
+      doc.setFillColor(255, 255, 255);
+      doc.roundedRect(rightColX, rightY, 60, 60, 3, 3, 'F');
+      
+      // Save state and clip to rounded rectangle path
+      doc.saveGraphicsState();
+      
+      // Add photo with proper sizing
+      doc.addImage(photoBase64, 'PNG', rightColX + 2, rightY + 2, 56, 56);
+      
+      doc.restoreGraphicsState();
+      
+      // Add premium border with gradient effect
+      doc.setDrawColor(...colors.primary);
+      doc.setLineWidth(1.5);
+      doc.roundedRect(rightColX, rightY, 60, 60, 3, 3, 'S');
+      
+      // Add inner border for depth
+      doc.setDrawColor(255, 255, 255);
+      doc.setGState(doc.GState({ opacity: 0.5 }));
+      doc.setLineWidth(0.5);
+      doc.roundedRect(rightColX + 1.5, rightY + 1.5, 57, 57, 2, 2, 'S');
+      doc.setGState(doc.GState({ opacity: 1 }));
+    } catch (err) {
+      console.error('Error adding photo:', err);
+      // Fallback to placeholder
+      doc.setFillColor(240, 240, 245);
+      doc.roundedRect(rightColX, rightY, 60, 60, 3, 3, 'F');
+      doc.setDrawColor(...colors.primary);
+      doc.setLineWidth(0.5);
+      doc.roundedRect(rightColX, rightY, 60, 60, 3, 3, 'S');
+      doc.setFontSize(9);
+      doc.setTextColor(...colors.textLight);
+      doc.text('Professional', rightColX + 30, rightY + 27, { align: 'center' });
+      doc.text('Photo', rightColX + 30, rightY + 33, { align: 'center' });
+    }
   } else {
     // Fallback placeholder
     doc.setFillColor(240, 240, 245);
