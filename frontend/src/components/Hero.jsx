@@ -3,6 +3,7 @@ import { motion, useInView, useAnimation } from 'framer-motion';
 import { Button } from './ui/button';
 import { MapPin, Briefcase, Download, Mail, TrendingUp, Users, Award, Calendar } from 'lucide-react';
 import AnimatedCounter from './AnimatedCounter';
+import generateResumePDF from '../utils/generateResumePDF';
 
 const Hero = () => {
   const scrollToContact = () => {
@@ -13,41 +14,7 @@ const Hero = () => {
   };
 
   const handleDownloadResume = () => {
-    // Create resume content
-    const resumeContent = `
-SAURABH MISHRA
-Operations Manager | Customer Retention Specialist | Team Leader
-
-Contact: saurabhmishra33555@gmail.com | +91 9867179669
-LinkedIn: https://www.linkedin.com/in/saurabh-mishra-004a98383/
-Portfolio: https://bizcontrol.tech
-
-SUMMARY
-6+ years of experience in operations, customer retention, and team leadership across TCS (Citi Bank), Concentrix (JP Morgan Chase), and Accenture.
-
-EXPERIENCE
-TCS (Citi Bank) - Account Retention Manager (Jul 2024 - Jan 2026)
-Concentrix (JP Morgan Chase) - Retention Manager (Mar 2024 - Jul 2024)
-Accenture - Client Support Associate & Trainer (Mar 2019 - Feb 2024)
-Vidyalankar - Branch Head (Dec 2018 - Mar 2019)
-Karvy Digikonnect - Team Leader (Aug 2018 - Nov 2018)
-
-EDUCATION
-BSc (2015), HSC (2009)
-
-CERTIFICATIONS
-Business Strategy | Leadership & Management | Stakeholder Management
-`;
-
-    const blob = new Blob([resumeContent], { type: 'text/plain' });
-    const url = window.URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'Saurabh_Mishra_Resume.txt';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    window.URL.revokeObjectURL(url);
+    generateResumePDF();
   };
 
   const stats = [
