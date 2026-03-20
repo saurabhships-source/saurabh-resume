@@ -49,7 +49,7 @@ const generateResumePDF = () => {
 
   // ===== PAGE 1 - HEADER =====
   doc.setFillColor(...colors.primary);
-  doc.rect(0, 0, pageWidth, 58, 'F');
+  doc.rect(0, 0, pageWidth, 52, 'F');
 
   // Name
   doc.setFontSize(32);
@@ -70,19 +70,16 @@ const generateResumePDF = () => {
   doc.line(15, 34, 195, 34);
   doc.setGState(doc.GState({ opacity: 1 }));
 
-  // Contact Info
-  doc.setFontSize(8.5);
+  // Contact Info - Only Email and Phone
+  doc.setFontSize(9);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(...colors.white);
   
   doc.text('Email: saurabhmishra33555@gmail.com', 15, 40);
-  doc.text('Phone: +91 9867179669 / 9155361659', 15, 45);
-  doc.text('Location: Dombivli, India (Remote)', 15, 50);
-  doc.text('LinkedIn: linkedin.com/in/saurabh-mishra-004a98383', 105, 40);
-  doc.text('Portfolio: bizcontrol.tech', 105, 45);
+  doc.text('Phone: +91 9867179669 / 9155361659', 15, 46);
 
-  leftY = 68;
-  rightY = 68;
+  leftY = 62;
+  rightY = 62;
 
   // ===== RIGHT SIDEBAR - PAGE 1 =====
   
@@ -445,6 +442,44 @@ const generateResumePDF = () => {
   const projectDesc = 'A self-initiated project exploring better ways of managing tasks, tracking productivity, and improving operational visibility for small teams. This platform demonstrates my understanding of operations challenges and my ability to develop practical solutions.';
   const projectLines = doc.splitTextToSize(projectDesc, 175);
   doc.text(projectLines, 18, page2Y + 17);
+
+  page2Y += 35;
+
+  // Additional Contact Information
+  doc.setFontSize(14);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(...colors.primary);
+  doc.text('ADDITIONAL CONTACT', 15, page2Y);
+  page2Y += 2;
+  doc.setDrawColor(...colors.primary);
+  doc.setLineWidth(1.2);
+  doc.line(15, page2Y, 52, page2Y);
+  page2Y += 10;
+
+  addShadow(15, page2Y, 180, 20, 2);
+  addRoundedRect(15, page2Y, 180, 20, 2, 'F', colors.white);
+
+  doc.setFontSize(9);
+  doc.setFont('helvetica', 'normal');
+  doc.setTextColor(...colors.text);
+  
+  doc.setFont('helvetica', 'bold');
+  doc.text('Location:', 18, page2Y + 7);
+  doc.setFont('helvetica', 'normal');
+  doc.text('Dombivli, India (Open to Remote Work)', 35, page2Y + 7);
+  
+  doc.setFont('helvetica', 'bold');
+  doc.text('LinkedIn:', 18, page2Y + 13);
+  doc.setFont('helvetica', 'normal');
+  doc.setTextColor(...colors.primary);
+  doc.text('linkedin.com/in/saurabh-mishra-004a98383', 35, page2Y + 13);
+  
+  doc.setTextColor(...colors.text);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Portfolio:', 115, page2Y + 13);
+  doc.setFont('helvetica', 'normal');
+  doc.setTextColor(...colors.primary);
+  doc.text('bizcontrol.tech', 131, page2Y + 13);
 
   // Footer
   doc.setFontSize(7);
