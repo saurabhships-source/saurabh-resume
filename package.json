@@ -5,6 +5,12 @@
   "repository": "https://github.com/saurabhships-source/saurabh-resume",
   "author": "saurabhships-source <saurabh.ships@gmail.com>",
   "license": "MIT",
+
+  "scripts": {
+    "start": "cd frontend && npm start",
+    "build": "cd frontend && npm run build"
+  },
+
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@craco/craco": "7.1.0",
