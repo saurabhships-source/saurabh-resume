@@ -94,16 +94,15 @@ const Hero = () => {
 
           </div>
 
-          {/* RIGHT IMAGE (FIXED ✅) */}
+          {/* RIGHT IMAGE - FINAL FIX */}
           <div className="flex justify-center lg:justify-end">
 
-            <div className="w-full max-w-md h-[420px] lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl ring-4 ring-blue-100 flex items-center justify-center bg-white">
+            <div className="w-full max-w-md aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl ring-4 ring-blue-100 bg-white">
 
               <motion.img
                 src="https://customer-assets.emergentagent.com/job_saurabh-ops/artifacts/syafy5uc_ChatGPT%20Image%20Mar%2019%2C%202026%2C%2011_11_39%20PM.png"
                 alt="Saurabh Mishra"
-                className="w-full h-full object-contain"
-                style={{ objectPosition: 'center top' }}
+                className="w-full h-full object-cover object-top"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
               />
