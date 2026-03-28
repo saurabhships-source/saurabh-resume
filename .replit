@@ -44,6 +44,7 @@ localPort = 5000
 externalPort = 80
 
 [deployment]
-deploymentTarget = "autoscale"
+deploymentTarget = "static"
 run = ["sh", "-c", "cd frontend && npx serve -s build -l 5000"]
-build = ["sh", "-c", "cd frontend && npm run build"]
+build = ["bash", "-c", "cd frontend && npm run build"]
+publicDir = "frontend/build"

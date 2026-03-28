@@ -1,0 +1,72 @@
+Update my GitHub repository with the latest version of my resume website and ensure it is clean, stable, and deployment-ready.
+
+Project Goal:
+
+* This is a frontend-only resume website (NO backend required)
+* It should match the latest premium resume design and content
+* It should be ready for deployment on Vercel
+
+Instructions:
+
+1. Ignore backend completely:
+
+   * Remove or ignore any backend-related files (MongoDB, server, API, env variables)
+   * Do NOT require MONGO_URL or DB_NAME
+
+2. Update resume content:
+
+   * Use the latest version of the resume content (9+ years experience)
+   * Include:
+
+     * Strong Professional Summary with:
+       “Experienced in handling end-to-end client lifecycle including sales, operations, and delivery.”
+       “Handled end-to-end ownership of client interactions from acquisition to delivery across banking and digital domains.”
+   * Ensure all sections are updated:
+
+     * Core Competencies (with context)
+     * Digital Marketing Skills
+     * Tools & Platforms
+     * Detailed Professional Experience (TCS, Concentrix, Accenture, Freelance, Karvy)
+     * Career Highlights
+     * What I Bring to the Table
+
+3. Improve UI/UX:
+
+   * Keep a clean 2-column premium layout
+   * Reduce clutter in left panel (limit progress bars)
+   * Improve spacing and readability
+   * Ensure “9+ Years Experience” badge is clearly visible
+   * Add a small “Professional Snapshot” section
+
+4. Fix frontend issues:
+
+   * Ensure project runs without errors
+   * Fix dependency conflicts (date-fns, react-day-picker)
+   * Clean install dependencies
+   * Ensure correct scripts:
+
+     * "start": "craco start" OR correct working script
+
+5. Resume download:
+
+   * Ensure “Download Resume” button directly downloads the correct PDF file
+   * Link it properly to the latest PDF
+
+6. Optimize for deployment:
+
+   * Make project Vercel-ready
+   * Ensure build works without errors
+   * Remove unnecessary files
+   * Optimize performance and loading
+
+7. GitHub actions:
+
+   * Commit all updated changes
+   * Push to the main branch
+   * Ensure repo is clean and properly structured
+
+Final Output:
+
+* Updated GitHub repo with latest resume website
+* Fully working frontend (no backend dependency)
+* Ready to deploy on Vercel without errors
