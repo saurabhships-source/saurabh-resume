@@ -1,8 +1,13 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Building2, Calendar, MapPin, ChevronRight } from 'lucide-react';
 
 const Experience = () => {
+
+  // ✅ PARALLAX EFFECT
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 800], [0, -80]);
+
   const experiences = [
     {
       company: 'Tata Consultancy Services (TCS)',
@@ -11,11 +16,11 @@ const Experience = () => {
       duration: '1.5 Yrs',
       location: 'Remote',
       responsibilities: [
-        'Managed retention of premium banking customers by understanding concerns and delivering tailored financial solutions to strengthen long-term loyalty.',
-        'Implemented targeted retention strategies — identifying at-risk accounts, handling objections effectively, and converting potential exits into positive outcomes.',
-        'Resolved high-priority escalations with empathy and precision, improving CSAT scores and reducing repeat complaint volumes.',
-        'Collaborated with backend teams to ensure seamless, SLA-compliant issue resolution across all customer touchpoints.',
-        'Monitored and reported on key KPIs including retention rate, quality scores, and first-call resolution to continuously improve performance.'
+        'Managed retention of premium banking customers and improved long-term loyalty.',
+        'Identified at-risk accounts and converted exits into positive outcomes.',
+        'Resolved escalations with empathy and precision, improving CSAT.',
+        'Collaborated with backend teams for SLA-compliant resolutions.',
+        'Tracked KPIs like retention rate, quality scores, and FCR.'
       ]
     },
     {
@@ -25,10 +30,10 @@ const Experience = () => {
       duration: '4 Months',
       location: 'Remote',
       responsibilities: [
-        'Handled high-volume inbound customer interactions for a leading global financial institution with accuracy and professionalism.',
-        'Managed structured retention conversations, identifying pain points and providing solutions that reduced churn and improved satisfaction.',
-        'Maintained strict service quality and compliance standards throughout all customer engagements.',
-        'Demonstrated strong active listening, empathy, and problem-solving skills in every interaction.'
+        'Handled high-volume inbound customer interactions professionally.',
+        'Reduced churn through structured retention conversations.',
+        'Maintained strict service quality and compliance standards.',
+        'Demonstrated strong communication and problem-solving skills.'
       ]
     },
     {
@@ -38,11 +43,11 @@ const Experience = () => {
       duration: '5 Years',
       location: 'Mumbai',
       responsibilities: [
-        'Delivered multi-channel support (voice, chat, and email) for international clients — Verizon and Facebook — ensuring high-quality customer experiences.',
-        'Resolved customer queries within SLA timelines, maintaining strong satisfaction scores.',
-        'Supported Facebook operations with accuracy and compliance.',
-        'Assisted in NGO training sessions focused on communication and professional readiness.',
-        'Mentored peers on escalation handling and quality improvement.'
+        'Provided multi-channel support for international clients.',
+        'Maintained high SLA and customer satisfaction scores.',
+        'Handled Facebook operations with accuracy and compliance.',
+        'Conducted NGO training sessions.',
+        'Mentored team members to improve performance.'
       ]
     },
     {
@@ -52,11 +57,11 @@ const Experience = () => {
       duration: '~1 Year',
       location: 'Remote',
       responsibilities: [
-        'Managed end-to-end client lifecycle — from lead generation to final delivery.',
-        'Converted leads through effective pitching and negotiation.',
-        'Coordinated with designers and developers for project execution.',
-        'Handled feedback, revisions, and payment closure.',
-        'Maintained client relationships and ensured satisfaction.'
+        'Managed full client lifecycle from lead generation to delivery.',
+        'Converted leads through pitching and negotiation.',
+        'Coordinated with designers and developers.',
+        'Handled feedback, revisions, and payments.',
+        'Ensured client satisfaction and repeat business.'
       ]
     },
     {
@@ -66,56 +71,55 @@ const Experience = () => {
       duration: '4 Months',
       location: 'Mumbai',
       responsibilities: [
-        'Led a team of 30+ associates, ensuring smooth operations.',
-        'Achieved KPI/KRA targets while maintaining service quality.',
-        'Handled escalations and supported team in complex cases.',
-        'Coordinated with management for performance improvement.'
+        'Led a team of 30+ associates.',
+        'Achieved KPI/KRA targets consistently.',
+        'Handled escalations efficiently.',
+        'Improved team performance through coordination.'
       ]
     }
   ];
 
   return (
-    <section id="experience" className="py-20 bg-white will-change-transform">
+    <motion.section
+      id="experience"
+      style={{ y }}
+      className="py-20 bg-white will-change-transform"
+    >
       <div className="container mx-auto px-6 lg:px-12">
 
         {/* Heading */}
         <motion.div
           className="text-center space-y-4 mb-16"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8 }}
         >
-          <h3 className="text-sm font-bold text-blue-900 uppercase tracking-wide">
+          <h3 className="text-sm font-bold text-blue-900 uppercase">
             Career Journey
           </h3>
+
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900">
             Professional Experience
           </h2>
+
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            9+ years across BPO operations, customer retention, digital marketing, and team leadership
+            9+ years across BPO, retention, digital marketing, and leadership
           </p>
         </motion.div>
 
-        {/* Apple-style Stagger Container */}
+        {/* Cards */}
         <motion.div
           className="max-w-6xl mx-auto space-y-8"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
           variants={{
-            hidden: {},
-            visible: {
-              transition: {
-                staggerChildren: 0.18
-              }
-            }
+            visible: { transition: { staggerChildren: 0.18 } }
           }}
         >
           {experiences.map((exp, index) => (
             <motion.div
               key={index}
-              className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl p-8 shadow-lg border border-gray-200"
+              className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl p-8 shadow-lg border"
 
               variants={{
                 hidden: { opacity: 0, y: 80 },
@@ -123,57 +127,47 @@ const Experience = () => {
               }}
 
               transition={{
-                duration: 0.8,
+                duration: 0.7,
                 ease: [0.25, 0.1, 0.25, 1]
               }}
 
-              whileHover={{
-                y: -6,
-                scale: 1.015,
-                transition: { duration: 0.3 }
-              }}
+              whileHover={{ y: -6, scale: 1.02 }}
             >
 
               {/* Header */}
-              <div className="flex flex-col lg:flex-row lg:justify-between mb-6 pb-6 border-b border-gray-200">
-                <div className="flex items-start space-x-4">
-                  <div className="w-14 h-14 rounded-xl bg-blue-900 flex items-center justify-center">
-                    <Building2 className="w-7 h-7 text-white" />
-                  </div>
+              <div className="flex space-x-4 mb-6 border-b pb-6">
+                <div className="w-14 h-14 bg-blue-900 flex items-center justify-center rounded-xl">
+                  <Building2 className="text-white" />
+                </div>
 
-                  <div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-1">
-                      {exp.role}
-                    </h3>
-                    <p className="text-lg text-blue-900 font-semibold mb-2">
-                      {exp.company}
-                    </p>
+                <div>
+                  <h3 className="text-xl font-bold">{exp.role}</h3>
+                  <p className="text-blue-900 font-semibold">{exp.company}</p>
 
-                    <div className="flex flex-wrap gap-4 text-sm text-gray-600">
-                      <div className="flex items-center space-x-1">
-                        <Calendar className="w-4 h-4" />
-                        <span>{exp.period}</span>
-                      </div>
+                  <div className="flex gap-4 text-sm text-gray-600 mt-2">
+                    <span className="flex items-center">
+                      <Calendar className="w-4 mr-1" />
+                      {exp.period}
+                    </span>
 
-                      <span className="text-blue-700 bg-blue-100 px-2 py-0.5 rounded-full">
-                        {exp.duration}
-                      </span>
+                    <span className="bg-blue-100 px-2 rounded">
+                      {exp.duration}
+                    </span>
 
-                      <div className="flex items-center space-x-1">
-                        <MapPin className="w-4 h-4" />
-                        <span>{exp.location}</span>
-                      </div>
-                    </div>
+                    <span className="flex items-center">
+                      <MapPin className="w-4 mr-1" />
+                      {exp.location}
+                    </span>
                   </div>
                 </div>
               </div>
 
-              {/* Responsibilities */}
+              {/* Points */}
               <div className="space-y-3">
-                {exp.responsibilities.map((responsibility, idx) => (
-                  <div key={idx} className="flex items-start space-x-3">
-                    <ChevronRight className="w-5 h-5 text-blue-900 mt-1" />
-                    <p className="text-gray-700">{responsibility}</p>
+                {exp.responsibilities.map((item, i) => (
+                  <div key={i} className="flex space-x-3">
+                    <ChevronRight className="text-blue-900 mt-1" />
+                    <p className="text-gray-700">{item}</p>
                   </div>
                 ))}
               </div>
@@ -183,7 +177,7 @@ const Experience = () => {
         </motion.div>
 
       </div>
-    </section>
+    </motion.section>
   );
 };
 
