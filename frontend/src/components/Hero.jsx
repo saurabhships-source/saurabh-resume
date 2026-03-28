@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { Button } from './ui/button';
 import { MapPin, Briefcase, Download, Mail, TrendingUp, Users, Award, Calendar } from 'lucide-react';
 import AnimatedCounter from './AnimatedCounter';
-import generateResumePDF from '../utils/generateResumePDF';
 
 const Hero = () => {
   const scrollToContact = () => {
@@ -11,10 +10,6 @@ const Hero = () => {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-  };
-
-  const handleDownloadResume = async () => {
-    await generateResumePDF();
   };
 
   const stats = [
@@ -113,14 +108,14 @@ const Hero = () => {
                 <Mail className="w-5 h-5 mr-2" />
                 Get In Touch
               </Button>
-              <Button
-                onClick={handleDownloadResume}
-                variant="outline"
-                className="border-2 border-blue-900 text-blue-900 px-8 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105 hover:bg-blue-50"
+              <a
+                href="/Saurabh_Mishra_Resume.pdf"
+                download="Saurabh_Mishra_Resume.pdf"
+                className="inline-flex items-center border-2 border-blue-900 text-blue-900 px-8 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105 hover:bg-blue-50"
               >
                 <Download className="w-5 h-5 mr-2" />
                 Download Resume
-              </Button>
+              </a>
             </motion.div>
           </div>
 
