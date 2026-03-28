@@ -75,7 +75,7 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="py-20 bg-white">
+    <section id="experience" className="py-20 bg-white will-change-transform">
       <div className="container mx-auto px-6 lg:px-12">
 
         {/* Heading */}
@@ -97,24 +97,41 @@ const Experience = () => {
           </p>
         </motion.div>
 
-        {/* Experience Cards */}
-        <div className="max-w-6xl mx-auto space-y-8">
+        {/* Apple-style Stagger Container */}
+        <motion.div
+          className="max-w-6xl mx-auto space-y-8"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: {},
+            visible: {
+              transition: {
+                staggerChildren: 0.18
+              }
+            }
+          }}
+        >
           {experiences.map((exp, index) => (
             <motion.div
               key={index}
               className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl p-8 shadow-lg border border-gray-200"
 
-              initial={{ opacity: 0, y: 60, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
-
-              transition={{
-                duration: 0.6,
-                delay: index * 0.15,
-                ease: "easeOut"
+              variants={{
+                hidden: { opacity: 0, y: 80 },
+                visible: { opacity: 1, y: 0 }
               }}
 
-              whileHover={{ y: -8, scale: 1.02 }}
+              transition={{
+                duration: 0.8,
+                ease: [0.25, 0.1, 0.25, 1]
+              }}
+
+              whileHover={{
+                y: -6,
+                scale: 1.015,
+                transition: { duration: 0.3 }
+              }}
             >
 
               {/* Header */}
@@ -163,7 +180,7 @@ const Experience = () => {
 
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
       </div>
     </section>
