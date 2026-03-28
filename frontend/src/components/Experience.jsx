@@ -61,14 +61,15 @@ const Experience = () => {
     },
     {
       company: 'Karvy Digikonnect',
-      role: 'Customer Service Associate – Bharti AXA',
+      role: 'Team Leader – Bharti AXA',
       period: 'Aug 2018 – Nov 2018',
       duration: '4 Months',
       location: 'Mumbai',
       responsibilities: [
-        'Handled inbound customer queries related to insurance policies, renewals, and claims with accuracy and empathy.',
-        'Gained foundational exposure to insurance processes, compliance standards, and customer service protocols.',
-        'Supported team coordination and consistently met daily KPI/KRA targets set by team leadership.'
+        'Led a team of 30+ associates, ensuring smooth daily operations and performance management.',
+        'Monitored and achieved all KPI/KRA targets, maintaining high service quality and team productivity.',
+        'Handled customer escalations and supported the team in resolving complex queries efficiently.',
+        'Coordinated with management to track performance, improve processes, and drive team results.'
       ]
     }
   ];
@@ -102,7 +103,6 @@ const Experience = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              {/* Header */}
               <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-6 pb-6 border-b border-gray-200">
                 <div className="flex items-start space-x-4">
                   <div className="w-14 h-14 rounded-xl bg-blue-900 flex items-center justify-center flex-shrink-0">
@@ -126,7 +126,6 @@ const Experience = () => {
                 </div>
               </div>
 
-              {/* Responsibilities */}
               <div className="space-y-3">
                 {exp.responsibilities.map((responsibility, idx) => (
                   <div key={idx} className="flex items-start space-x-3">
