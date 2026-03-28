@@ -72,7 +72,7 @@ const Contact = () => {
     {
       icon: MapPin,
       label: 'Location',
-      value: 'Dombivli, India',
+      value: 'Titwala East, Maharashtra',
       link: null
     }
   ];

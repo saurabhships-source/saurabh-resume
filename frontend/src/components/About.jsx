@@ -3,54 +3,45 @@ import { motion } from 'framer-motion';
 import { Target, TrendingUp, Shield, Zap, CircleCheck as CheckCircle } from 'lucide-react';
 
 const About = () => {
-  const achievements = [
-    'Contributed to improving customer retention rates through targeted follow-up strategies and account management',
-    'Managed and coordinated teams of up to 30 members, tracking KPIs and supporting performance goals',
-    'Worked on process optimization initiatives that helped reduce response times and improve workflow efficiency',
-    'Handled 200+ customer escalations with a 94% satisfaction rate by providing timely resolutions',
-    'Trained new team members on processes and quality standards, helping reduce onboarding time'
+  const highlights = [
+    'Premium Banking – Retention Expert with hands-on experience at Citi Bank (TCS) and JP Morgan Chase (Concentrix)',
+    '5 Years at Accenture – International client support for Verizon (telecom) and Facebook (digital)',
+    "NGO Trainer \u2013 Facilitated communication and professional skills sessions under Accenture\u2019s social initiative",
+    'Full Lifecycle Ownership – Client acquisition, onboarding, operations, and final delivery at Inventive Cafe',
+    'Multi-channel expertise – Voice, chat, and email support with consistently high SLA and CSAT scores'
   ];
 
   const coreStrengths = [
     {
       icon: Target,
-      title: 'Operations Management',
-      description: 'Support day-to-day operations, process improvements, and workflow coordination across teams'
+      title: 'Customer Retention',
+      description: 'Identifying at-risk accounts, handling objections, and converting potential exits into positive outcomes'
     },
     {
       icon: TrendingUp,
-      title: 'Customer Retention',
-      description: 'Work on retention strategies, account management, and initiatives to reduce customer churn'
+      title: 'KPI / KRA Monitoring',
+      description: 'Tracking retention rate, quality scores, and first-call resolution to continuously improve performance'
     },
     {
       icon: Shield,
-      title: 'Problem Resolution',
-      description: 'Handle escalations professionally, working to resolve issues and maintain customer satisfaction'
+      title: 'Escalation Handling',
+      description: 'Resolving high-priority issues with empathy and precision, improving CSAT and reducing repeat complaints'
     },
     {
       icon: Zap,
-      title: 'Team Coordination',
-      description: 'Support and guide team members, track performance, and help achieve operational targets'
+      title: 'Full Client Lifecycle',
+      description: 'End-to-end ownership from cold calling and pitching to onboarding, execution, and final delivery'
     }
   ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15
-      }
-    }
+    visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
   };
 
   const itemVariants = {
     hidden: { opacity: 0, x: -30 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.5, ease: 'easeOut' }
-    }
+    visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: 'easeOut' } }
   };
 
   const achievementVariants = {
@@ -58,11 +49,7 @@ const About = () => {
     visible: (index) => ({
       opacity: 1,
       x: 0,
-      transition: {
-        duration: 0.5,
-        delay: index * 0.1,
-        ease: 'easeOut'
-      }
+      transition: { duration: 0.5, delay: index * 0.1, ease: 'easeOut' }
     })
   };
 
@@ -75,45 +62,43 @@ const About = () => {
             className="space-y-8"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: '-100px' }}
             variants={containerVariants}
           >
             <motion.div className="space-y-4" variants={itemVariants}>
-              <h3 className="text-sm font-bold text-navy-600 uppercase tracking-wide">About Me</h3>
+              <h3 className="text-sm font-bold text-blue-900 uppercase tracking-wide">Professional Summary</h3>
               <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                Experienced in Operations, Retention, and Team Management
+                9+ Years Across Retention, Operations & Digital Marketing
               </h2>
             </motion.div>
 
             <motion.div className="space-y-5 text-lg text-gray-700 leading-relaxed" variants={itemVariants}>
               <p>
-                I have over 6 years of experience working in operations and customer support roles across organizations 
-                like <strong>TCS (Citi Bank)</strong>, <strong>Concentrix (JP Morgan Chase)</strong>, and <strong>Accenture</strong>.
+                Results-oriented BPO professional and digital marketing coordinator with 9+ years of experience
+                spanning <strong>customer retention, team coordination, process training, and project delivery</strong>.
               </p>
               <p>
-                My work has focused on supporting teams, handling customer escalations, improving processes, and contributing 
-                to retention initiatives. I've worked in fast-paced environments where attention to detail, clear communication, 
-                and problem-solving are essential.
+                Experienced in handling end-to-end client lifecycle including sales, operations, and delivery.
+                Handled end-to-end ownership of client interactions from acquisition to delivery across{' '}
+                <strong>banking and digital domains</strong>.
               </p>
               <p>
-                I'm comfortable managing daily operations, coordinating with cross-functional teams, and working on initiatives 
-                that help improve efficiency and customer satisfaction. I also have experience training new team members and 
-                supporting their development.
+                Adept at managing premium banking clients, supporting cross-functional teams, and independently
+                driving client acquisition and fulfilment with consistent quality. Languages: <strong>English, Hindi, Marathi</strong>.
               </p>
-              <p className="text-navy-600 font-semibold">
-                I'm looking for roles where I can apply my experience in operations management, customer retention, and team 
-                coordination to help organizations run smoothly and achieve their goals.
+              <p className="text-blue-900 font-semibold">
+                Immediate joiner — open to all shifts & WFH. Banking · Telecom · Insurance · Digital Mktg · BPO / KPO
               </p>
             </motion.div>
 
-            {/* Key Achievements */}
+            {/* Key Highlights */}
             <motion.div
-              className="bg-gradient-to-br from-navy-50 to-blue-50 rounded-xl p-6 border-l-4 border-navy-600"
+              className="bg-gradient-to-br from-blue-50 to-slate-50 rounded-xl p-6 border-l-4 border-blue-900"
               variants={itemVariants}
             >
-              <h4 className="text-lg font-bold text-gray-900 mb-4">Key Contributions</h4>
+              <h4 className="text-lg font-bold text-gray-900 mb-4">Career Highlights</h4>
               <ul className="space-y-3">
-                {achievements.map((achievement, idx) => (
+                {highlights.map((item, idx) => (
                   <motion.li
                     key={idx}
                     className="flex items-start space-x-3"
@@ -123,8 +108,8 @@ const About = () => {
                     viewport={{ once: true }}
                     variants={achievementVariants}
                   >
-                    <CheckCircle className="w-5 h-5 text-navy-600 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700">{achievement}</span>
+                    <CheckCircle className="w-5 h-5 text-blue-900 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-700">{item}</span>
                   </motion.li>
                 ))}
               </ul>
@@ -136,7 +121,7 @@ const About = () => {
             className="space-y-8"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
           >
             <motion.div
@@ -147,7 +132,7 @@ const About = () => {
               <img
                 src="https://customer-assets.emergentagent.com/job_saurabh-ops/artifacts/d2zk4mih_ChatGPT%20Image%20Mar%2020%2C%202026%2C%2012_48_16%20PM.png"
                 alt="Saurabh Mishra - Professional at Work"
-                className="w-full h-[450px] object-cover object-top"
+                className="w-full h-[400px] object-cover object-top"
               />
             </motion.div>
 
@@ -165,7 +150,7 @@ const About = () => {
                     whileHover={{ y: -5, scale: 1.02 }}
                   >
                     <motion.div
-                      className="w-12 h-12 rounded-lg bg-navy-600 flex items-center justify-center mb-4"
+                      className="w-12 h-12 rounded-lg bg-blue-900 flex items-center justify-center mb-4"
                       whileHover={{ rotate: 360 }}
                       transition={{ duration: 0.6 }}
                     >

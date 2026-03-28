@@ -14,10 +14,10 @@ const Footer = () => {
               <span className="text-blue-400">Saurabh</span> Mishra
             </h3>
             <p className="text-gray-400 leading-relaxed">
-              Virtual Assistant | Operations Manager | Team Leader | Trainer
+              BPO Operations Leader · Customer Retention Specialist · Digital Marketing Coordinator
             </p>
             <p className="text-sm text-gray-500">
-              Available for Remote Work Opportunities
+              Titwala East, Maharashtra · Immediate Joiner · Open to All Shifts & WFH
             </p>
           </div>
 

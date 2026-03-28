@@ -1,0 +1,154 @@
+Create a premium, visually appealing, profile-style resume (not a basic resume) with a modern 2-column layout. The design should look like a personal brand profile with strong sections, highlights, and clean spacing.
+
+Candidate Name:
+Saurabh Mishra
+
+Location:
+Titwala East, Maharashtra
+
+Contact:
+Phone: 9867179669
+Email: [saurabhmishra33555@gmail.com](mailto:saurabhmishra33555@gmail.com)
+
+Total Experience:
+9+ years
+
+---
+
+Professional Summary:
+Write a powerful, sharp, and slightly executive-level summary including:
+
+* Experience across customer retention, client lifecycle, operations, and digital marketing
+* Include these exact lines:
+  “Experienced in handling end-to-end client lifecycle including sales, operations, and delivery.”
+  “Handled end-to-end ownership of client interactions from acquisition to delivery across banking and digital domains.”
+
+Make it sound like a mid-level professional, not entry-level.
+
+---
+
+Core Competencies (with context, not just keywords):
+
+* Team Coordination (Performance Support & Task Alignment)
+* Customer Retention (Objection Handling & Engagement)
+* Training Support (NGO Training Exposure)
+* Escalation Handling (Complex Issue Resolution)
+* KPI/KRA Monitoring (Performance Tracking)
+* Sales & Communication (Conversion & Relationship Building)
+
+---
+
+Digital Marketing Skills (highlighted section):
+
+* Client Acquisition & Sales (cold calling, lead generation, conversion)
+* SEO (On-page basics: keywords, meta tags, optimization)
+* Canva Graphic Design (multiple logos created)
+* Website Design (basic structure and setup)
+* Social Media Handling (posting and engagement)
+* Project Coordination (end-to-end execution)
+
+---
+
+Tools & Platforms:
+
+* Asana, Trello, ClickUp (task tracking, workflow coordination)
+* Slack, Zoom (team communication)
+* Excel, Gmail (reporting and communication)
+
+---
+
+Professional Experience (VERY DETAILED, IMPACT-DRIVEN):
+
+TCS — Account Retention Manager (Citi Bank) | Jul 2024 – Jan 2026
+
+* Managed premium banking customers and delivered personalized financial solutions
+* Implemented retention strategies, identified at-risk customers, and reduced churn
+* Handled objections and influenced customer decisions effectively
+* Resolved escalations improving CSAT and reducing repeat issues
+* Collaborated cross-functionally ensuring SLA-based resolution
+* Monitored KPIs like retention rate, quality score, and first-call resolution
+
+---
+
+Concentrix — Retention Specialist (JP Morgan Chase) | Mar 2024 – Jul 2024
+
+* Handled high-volume inbound customer interactions
+* Conducted structured retention conversations and reduced churn
+* Identified root causes and improved customer satisfaction
+* Maintained strict compliance and service quality
+
+---
+
+Accenture — Client Support Associate (Verizon & Facebook) | Mar 2019 – Feb 2024
+
+* Delivered support via voice, chat, and email for international clients
+* Maintained SLA-based resolution and high customer satisfaction
+* Handled account, policy, and advertising queries with accuracy
+
+Training Exposure:
+
+* Assisted NGO training programs
+* Conducted communication and professional skill sessions
+* Mentored peers on escalation handling and quality
+
+---
+
+Freelance — Digital Marketing Coordinator & Client Manager (Inventive Cafe) | 2017 – 2018
+
+* Managed full client lifecycle from cold calling to final delivery
+* Converted leads into paying clients through pitching and negotiation
+* Coordinated with designers and developers
+* Managed onboarding, feedback, revisions, and delivery
+* Handled payments and maintained client relationships
+* Independently managed sales + operations lifecycle
+
+---
+
+Karvy Digikonnect — Customer Service Associate (Bharti AXA) | Aug 2018 – Nov 2018
+
+* Handled insurance-related customer queries
+* Supported operations and team coordination
+* Maintained KPI/KRA performance standards
+
+---
+
+Additional Sections (IMPORTANT):
+
+1. Career Highlights (small visual boxes):
+
+* 5 Years @ Accenture
+* International Client Experience
+* NGO Trainer
+* End-to-End Client Lifecycle Ownership
+
+2. What I Bring to the Table:
+
+* Client-first mindset
+* Team mindset and mentoring
+* Full lifecycle ownership
+* Adaptability across roles
+
+3. Soft Skills:
+   Communication, Leadership, Problem Solving, Adaptability, Time Management, Teamwork
+
+4. Industries Served:
+   Banking, Telecom, Insurance, Social Media, Digital Marketing, BPO/KPO
+
+5. Availability:
+   Immediate Joiner, Open to all shifts & WFH
+
+---
+
+Design Instructions:
+
+* Use a clean 2-column layout
+* Left side: skills, tools, highlights
+* Right side: experience and summary
+* Use minimal icons and spacing for premium look
+* Avoid clutter, keep it readable
+* Make it look like a personal brand profile, not a basic resume
+
+---
+
+Output:
+Generate a final polished resume that looks premium, modern, and recruiter-attractive, ready for PDF or website portfolio use.
