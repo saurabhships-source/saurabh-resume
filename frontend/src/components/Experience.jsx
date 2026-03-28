@@ -38,11 +38,11 @@ const Experience = () => {
       duration: '5 Years',
       location: 'Mumbai',
       responsibilities: [
-        'Delivered multi-channel support (voice, chat, and email) for international clients — Verizon (telecom) and Facebook (digital) — ensuring high-quality, consistent customer experiences.',
-        'Resolved customer queries within strict SLA timelines, maintaining high first-contact resolution and satisfaction scores.',
-        'Supported Facebook\'s client-facing operations by handling account, policy, and advertising-related queries with accuracy and compliance.',
-        'Assisted in training NGO students — conducting sessions on communication, professional readiness, and workplace confidence as part of Accenture\'s social initiative.',
-        'Mentored peers on de-escalation techniques, customer handling, and quality adherence — contributing to improved team performance metrics.'
+        'Delivered multi-channel support (voice, chat, and email) for international clients — Verizon and Facebook — ensuring high-quality customer experiences.',
+        'Resolved customer queries within SLA timelines, maintaining strong satisfaction scores.',
+        'Supported Facebook operations with accuracy and compliance.',
+        'Assisted in NGO training sessions focused on communication and professional readiness.',
+        'Mentored peers on escalation handling and quality improvement.'
       ]
     },
     {
@@ -52,11 +52,11 @@ const Experience = () => {
       duration: '~1 Year',
       location: 'Remote',
       responsibilities: [
-        'Independently managed end-to-end client lifecycle — from cold calling and service pitching to onboarding, execution, and final delivery across logo, website, SEO, and social media projects.',
-        'Generated and converted leads through targeted outreach and persuasive pitching — negotiating scope and pricing to close deals effectively.',
-        'Coordinated with designers and developers to ensure timely, quality-driven project execution aligned with client briefs and expectations.',
-        'Handled revision cycles, client feedback, payment collection, and final sign-off — maintaining strong client relationships and driving repeat business.',
-        'Demonstrated full ownership of sales and operations lifecycle, independently managing timelines, quality assurance, and client satisfaction.'
+        'Managed end-to-end client lifecycle — from lead generation to final delivery.',
+        'Converted leads through effective pitching and negotiation.',
+        'Coordinated with designers and developers for project execution.',
+        'Handled feedback, revisions, and payment closure.',
+        'Maintained client relationships and ensured satisfaction.'
       ]
     },
     {
@@ -66,10 +66,10 @@ const Experience = () => {
       duration: '4 Months',
       location: 'Mumbai',
       responsibilities: [
-        'Led a team of 30+ associates, ensuring smooth daily operations and performance management.',
-        'Monitored and achieved all KPI/KRA targets, maintaining high service quality and team productivity.',
-        'Handled customer escalations and supported the team in resolving complex queries efficiently.',
-        'Coordinated with management to track performance, improve processes, and drive team results.'
+        'Led a team of 30+ associates, ensuring smooth operations.',
+        'Achieved KPI/KRA targets while maintaining service quality.',
+        'Handled escalations and supported team in complex cases.',
+        'Coordinated with management for performance improvement.'
       ]
     }
   ];
@@ -77,6 +77,8 @@ const Experience = () => {
   return (
     <section id="experience" className="py-20 bg-white">
       <div className="container mx-auto px-6 lg:px-12">
+
+        {/* Heading */}
         <motion.div
           className="text-center space-y-4 mb-16"
           initial={{ opacity: 0, y: 20 }}
@@ -84,7 +86,9 @@ const Experience = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h3 className="text-sm font-bold text-blue-900 uppercase tracking-wide">Career Journey</h3>
+          <h3 className="text-sm font-bold text-blue-900 uppercase tracking-wide">
+            Career Journey
+          </h3>
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900">
             Professional Experience
           </h2>
@@ -93,50 +97,74 @@ const Experience = () => {
           </p>
         </motion.div>
 
+        {/* Experience Cards */}
         <div className="max-w-6xl mx-auto space-y-8">
           {experiences.map((exp, index) => (
             <motion.div
               key={index}
-              className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl p-8 shadow-lg border border-gray-200"
+
+              initial={{ opacity: 0, y: 60, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+
+              transition={{
+                duration: 0.6,
+                delay: index * 0.15,
+                ease: "easeOut"
+              }}
+
+              whileHover={{ y: -8, scale: 1.02 }}
             >
-              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-6 pb-6 border-b border-gray-200">
+
+              {/* Header */}
+              <div className="flex flex-col lg:flex-row lg:justify-between mb-6 pb-6 border-b border-gray-200">
                 <div className="flex items-start space-x-4">
-                  <div className="w-14 h-14 rounded-xl bg-blue-900 flex items-center justify-center flex-shrink-0">
+                  <div className="w-14 h-14 rounded-xl bg-blue-900 flex items-center justify-center">
                     <Building2 className="w-7 h-7 text-white" />
                   </div>
+
                   <div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-1">{exp.role}</h3>
-                    <p className="text-lg text-blue-900 font-semibold mb-2">{exp.company}</p>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-1">
+                      {exp.role}
+                    </h3>
+                    <p className="text-lg text-blue-900 font-semibold mb-2">
+                      {exp.company}
+                    </p>
+
                     <div className="flex flex-wrap gap-4 text-sm text-gray-600">
                       <div className="flex items-center space-x-1">
                         <Calendar className="w-4 h-4" />
-                        <span className="font-medium">{exp.period}</span>
+                        <span>{exp.period}</span>
                       </div>
-                      <span className="font-medium text-blue-700 bg-blue-100 px-2 py-0.5 rounded-full">{exp.duration}</span>
+
+                      <span className="text-blue-700 bg-blue-100 px-2 py-0.5 rounded-full">
+                        {exp.duration}
+                      </span>
+
                       <div className="flex items-center space-x-1">
                         <MapPin className="w-4 h-4" />
-                        <span className="font-medium">{exp.location}</span>
+                        <span>{exp.location}</span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
 
+              {/* Responsibilities */}
               <div className="space-y-3">
                 {exp.responsibilities.map((responsibility, idx) => (
                   <div key={idx} className="flex items-start space-x-3">
-                    <ChevronRight className="w-5 h-5 text-blue-900 mt-0.5 flex-shrink-0" />
-                    <p className="text-gray-700 leading-relaxed">{responsibility}</p>
+                    <ChevronRight className="w-5 h-5 text-blue-900 mt-1" />
+                    <p className="text-gray-700">{responsibility}</p>
                   </div>
                 ))}
               </div>
+
             </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );
