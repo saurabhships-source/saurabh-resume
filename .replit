@@ -1,0 +1,12 @@
+modules = ["nodejs-20", "web", "python-3.12"]
+[agent]
+expertMode = true
+
+[nix]
+channel = "stable-25_05"
+
+[userenv]
+
+[userenv.shared]
+DB_NAME = "portfolio_db"
+CORS_ORIGINS = "*"

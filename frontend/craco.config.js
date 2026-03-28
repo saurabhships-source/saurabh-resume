@@ -61,6 +61,15 @@ let webpackConfig = {
 };
 
 webpackConfig.devServer = (devServerConfig) => {
+  // Allow all hosts for Replit proxy compatibility
+  devServerConfig.host = "0.0.0.0";
+  devServerConfig.port = 5000;
+  devServerConfig.allowedHosts = "all";
+  devServerConfig.headers = {
+    ...devServerConfig.headers,
+    "Access-Control-Allow-Origin": "*",
+  };
+
   // Add health check endpoints if enabled
   if (config.enableHealthCheck && setupHealthEndpoints && healthPluginInstance) {
     const originalSetupMiddlewares = devServerConfig.setupMiddlewares;
