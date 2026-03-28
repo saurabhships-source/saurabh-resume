@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from './ui/button';
 import { Download, Menu, X } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -23,121 +23,104 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-lg shadow-lg transition-all duration-300 py-4 border-b border-white/10">
+    <motion.header
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 ${
+        isScrolled
+          ? 'bg-white/70 backdrop-blur-lg shadow-md border-b border-gray-200'
+          : 'bg-transparent'
+      }`}
+    >
       <div className="container mx-auto px-6 lg:px-12">
+
         <div className="flex items-center justify-between">
-          <div className="text-2xl font-bold text-white drop-shadow-lg">
-            <span className="text-blue-400">Saurabh</span> Mishra
+
+          {/* LOGO */}
+          <div className="text-xl font-bold text-blue-900 tracking-wide">
+            Saurabh Mishra
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <button
-              onClick={() => scrollToSection('about')}
-              className="text-white hover:text-blue-400 transition-colors font-medium drop-shadow-sm"
-            >
+          {/* DESKTOP NAV */}
+          <nav className="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-700">
+
+            <button onClick={() => scrollToSection('about')} className="hover:text-blue-900 transition">
               About
             </button>
-            <button
-              onClick={() => scrollToSection('skills')}
-              className="text-white hover:text-blue-400 transition-colors font-medium drop-shadow-sm"
-            >
+
+            <button onClick={() => scrollToSection('skills')} className="hover:text-blue-900 transition">
               Skills
             </button>
-            <button
-              onClick={() => scrollToSection('experience')}
-              className="text-white hover:text-blue-400 transition-colors font-medium drop-shadow-sm"
-            >
+
+            <button onClick={() => scrollToSection('experience')} className="hover:text-blue-900 transition">
               Experience
             </button>
-            <button
-              onClick={() => scrollToSection('education')}
-              className="text-white hover:text-blue-400 transition-colors font-medium drop-shadow-sm"
-            >
+
+            <button onClick={() => scrollToSection('education')} className="hover:text-blue-900 transition">
               Education
             </button>
-            <button
-              onClick={() => scrollToSection('certifications')}
-              className="text-white hover:text-blue-400 transition-colors font-medium drop-shadow-sm"
-            >
+
+            <button onClick={() => scrollToSection('certifications')} className="hover:text-blue-900 transition">
               Certifications
             </button>
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="text-white hover:text-blue-400 transition-colors font-medium drop-shadow-sm"
-            >
+
+            <button onClick={() => scrollToSection('contact')} className="hover:text-blue-900 transition">
               Contact
             </button>
+
+            {/* BUTTON */}
             <a
               href="/Saurabh_Mishra_Resume.pdf"
               download="Saurabh_Mishra_Resume.pdf"
-              className="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-105 px-4 py-2 rounded-md text-sm"
+              className="inline-flex items-center bg-blue-900 hover:bg-blue-800 text-white px-4 py-2 rounded-lg text-sm transition-all duration-300 hover:scale-105 shadow-md"
             >
               <Download className="w-4 h-4 mr-2" />
-              Download Resume
+              Resume
             </a>
+
           </nav>
 
-          {/* Mobile Menu Button */}
+          {/* MOBILE BUTTON */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-white hover:text-blue-400 transition-colors drop-shadow-sm"
+            className="md:hidden text-blue-900"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
+
         </div>
 
-        {/* Mobile Navigation */}
+        {/* MOBILE MENU */}
         {isMobileMenuOpen && (
-          <nav className="md:hidden mt-4 pb-4 space-y-3 border-t border-white/20 pt-4">
-            <button
-              onClick={() => scrollToSection('about')}
-              className="block w-full text-left text-white hover:text-blue-400 transition-colors font-medium py-2"
-            >
-              About
-            </button>
-            <button
-              onClick={() => scrollToSection('skills')}
-              className="block w-full text-left text-white hover:text-blue-400 transition-colors font-medium py-2"
-            >
-              Skills
-            </button>
-            <button
-              onClick={() => scrollToSection('experience')}
-              className="block w-full text-left text-white hover:text-blue-400 transition-colors font-medium py-2"
-            >
-              Experience
-            </button>
-            <button
-              onClick={() => scrollToSection('education')}
-              className="block w-full text-left text-white hover:text-blue-400 transition-colors font-medium py-2"
-            >
-              Education
-            </button>
-            <button
-              onClick={() => scrollToSection('certifications')}
-              className="block w-full text-left text-white hover:text-blue-400 transition-colors font-medium py-2"
-            >
-              Certifications
-            </button>
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="block w-full text-left text-white hover:text-blue-400 transition-colors font-medium py-2"
-            >
-              Contact
-            </button>
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="md:hidden mt-4 bg-white rounded-xl shadow-lg p-4 space-y-3"
+          >
+            {['about', 'skills', 'experience', 'education', 'certifications', 'contact'].map((item) => (
+              <button
+                key={item}
+                onClick={() => scrollToSection(item)}
+                className="block w-full text-left text-gray-700 hover:text-blue-900 py-2"
+              >
+                {item.charAt(0).toUpperCase() + item.slice(1)}
+              </button>
+            ))}
+
             <a
               href="/Saurabh_Mishra_Resume.pdf"
               download="Saurabh_Mishra_Resume.pdf"
-              className="w-full inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-semibold shadow-lg transition-colors mt-2 px-4 py-2 rounded-md text-sm"
+              className="w-full inline-flex items-center justify-center bg-blue-900 text-white px-4 py-2 rounded-lg mt-2"
             >
               <Download className="w-4 h-4 mr-2" />
               Download Resume
             </a>
-          </nav>
+          </motion.div>
         )}
+
       </div>
-    </header>
+    </motion.header>
   );
 };
 
