@@ -4,7 +4,6 @@ import { Target, TrendingUp, Shield, Zap, CircleCheck as CheckCircle } from 'luc
 
 const About = () => {
 
-  // ✅ PARALLAX
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 600], [0, -60]);
 
@@ -121,15 +120,15 @@ const About = () => {
             transition={{ duration: 0.8 }}
           >
 
-            {/* Image */}
+            {/* ✅ IMAGE FIXED (NO CROP EVER) */}
             <motion.div
-              className="rounded-2xl overflow-hidden shadow-2xl"
+              className="rounded-2xl overflow-hidden shadow-2xl bg-white"
               whileHover={{ scale: 1.03 }}
             >
               <img
                 src="https://customer-assets.emergentagent.com/job_saurabh-ops/artifacts/d2zk4mih_ChatGPT%20Image%20Mar%2020%2C%202026%2C%2012_48_16%20PM.png"
-                className="w-full h-[400px] object-cover"
                 alt="Saurabh"
+                className="w-full h-full object-contain aspect-[4/3] bg-white"
               />
             </motion.div>
 
