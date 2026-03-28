@@ -42,7 +42,7 @@ const About = () => {
     <motion.section
       id="about"
       style={{ y }}
-      className="py-20 bg-white will-change-transform"
+      className="py-20 bg-white"
     >
       <div className="container mx-auto px-6 lg:px-12">
 
@@ -120,15 +120,16 @@ const About = () => {
             transition={{ duration: 0.8 }}
           >
 
-            {/* ✅ IMAGE FIXED (NO CROP EVER) */}
+            {/* ✅ FIXED IMAGE */}
             <motion.div
-              className="rounded-2xl overflow-hidden shadow-2xl bg-white"
+              className="rounded-2xl overflow-hidden shadow-2xl ring-1 ring-gray-200"
               whileHover={{ scale: 1.03 }}
             >
               <img
                 src="https://customer-assets.emergentagent.com/job_saurabh-ops/artifacts/d2zk4mih_ChatGPT%20Image%20Mar%2020%2C%202026%2C%2012_48_16%20PM.png"
                 alt="Saurabh"
-                className="w-full h-full object-contain aspect-[4/3] bg-white"
+                className="w-full h-full object-cover aspect-[3/4]"
+                style={{ objectPosition: "center top" }}
               />
             </motion.div>
 
@@ -139,11 +140,11 @@ const About = () => {
                 return (
                   <motion.div
                     key={i}
-                    className="bg-white p-6 rounded-xl shadow-lg"
+                    className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all"
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: i * 0.1 }}
-                    whileHover={{ y: -5 }}
+                    whileHover={{ scale: 1.05 }}
                   >
                     <div className="w-12 h-12 bg-blue-900 flex items-center justify-center rounded-lg mb-4">
                       <Icon className="text-white w-6 h-6" />
