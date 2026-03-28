@@ -16,7 +16,9 @@ const CursorGlow = () => {
 
     window.addEventListener('mousemove', moveCursor);
     return () => window.removeEventListener('mousemove', moveCursor);
-  }, []);
+
+    // ✅ FIX (important)
+  }, [x, y]);
 
   return (
     <motion.div
@@ -27,12 +29,12 @@ const CursorGlow = () => {
         width: 200,
         height: 200,
         borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(59,130,246,0.25), transparent 70%)',
+        background: 'radial-gradient(circle, rgba(59,130,246,0.2), transparent 70%)',
         pointerEvents: 'none',
         x: smoothX,
         y: smoothY,
         zIndex: 9999,
-        filter: 'blur(40px)',
+        filter: 'blur(60px)',
       }}
     />
   );
